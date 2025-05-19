@@ -18,6 +18,8 @@ class CustomButton extends StatelessWidget {
       child: ElevatedButton(
           style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.primaryGreen,
+              elevation: 8,
+              shadowColor: AppColors.boxShadowColor,
               padding: const EdgeInsets.all(20),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(AppSizes.radiusButton))),
@@ -26,6 +28,7 @@ class CustomButton extends StatelessWidget {
             description,
             style: const TextStyle(
               fontSize: 25,
+              fontWeight: FontWeight.bold,
               color: AppColors.whiteColor,
               decoration: TextDecoration.none,
             ),

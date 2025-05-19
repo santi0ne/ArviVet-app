@@ -11,6 +11,10 @@ class StartView extends StatelessWidget {
       body: Stack(
         fit: StackFit.expand,
         children: [
+          Image.asset(
+            'assets/background.jpg',
+            fit: BoxFit.cover,
+          ),
           Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
