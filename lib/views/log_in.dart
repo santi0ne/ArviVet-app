@@ -22,8 +22,14 @@ class _LoginViewState extends State<LoginView> {
     return Scaffold(
       backgroundColor: AppColors.whiteColor,
       body: SafeArea(
+        child: SingleChildScrollView(
+    child: ConstrainedBox(
+      constraints: BoxConstraints(
+        minHeight: MediaQuery.of(context).size.height,
+      ),
         child: Padding(
           padding: const EdgeInsets.all(AppSizes.padding),
+          child: IntrinsicHeight(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -97,6 +103,9 @@ class _LoginViewState extends State<LoginView> {
               ),
             ],
           ),
+        ),
+      ),
+    )
         ),
       ),
     );

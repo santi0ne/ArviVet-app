@@ -9,7 +9,7 @@ class AppTextStyles {
   );
 
   static const TextStyle subtitle = TextStyle(
-    fontSize: 16,
+    fontSize: 24,
     color: Colors.black87,
   );
 
