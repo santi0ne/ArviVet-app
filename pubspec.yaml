@@ -9,6 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_svg: ^2.0.7
 
 dev_dependencies:
   flutter_test:
@@ -19,3 +20,8 @@ flutter:
   uses-material-design: true
   assets:
     - assets/background.jpg
+    - assets/images/
+  fonts:
+  - family: RobotoFlex
+    fonts:
+      - asset: assets/fonts/RobotoFlex-Variable.ttf

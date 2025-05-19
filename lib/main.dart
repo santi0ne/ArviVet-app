@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'views/log_in.dart';
-import 'views/start.dart';
+import 'package:arvivet_app/views/log_in.dart';
+import 'package:arvivet_app/views/start.dart';
+import 'package:arvivet_app/views/register.dart';
+
 
 void main() {
   runApp(const MainApp());
@@ -13,8 +15,13 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "ArviVet App",
+      theme: ThemeData(
+        fontFamily: 'RobotoFlex', 
+      ),
       home: StartView(),
       debugShowCheckedModeBanner: false,
     );
   }
 }
+
+
