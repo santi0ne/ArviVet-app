@@ -9,6 +9,7 @@ class CustomInput extends StatelessWidget {
   final TextEditingController controller;
   final bool obscureText;
   final TextInputType keyboardType;
+  final Widget? suffixIcon;
 
   const CustomInput({
     super.key,
@@ -17,6 +18,7 @@ class CustomInput extends StatelessWidget {
     required this.controller,
     this.obscureText = false,
     this.keyboardType = TextInputType.text,
+    this.suffixIcon,
   });
 
   @override
@@ -32,6 +34,8 @@ class CustomInput extends StatelessWidget {
           keyboardType: keyboardType,
           decoration: InputDecoration(
             hintText: hintText,
+            hintStyle: AppTextStyles.hint,
+            suffixIcon: suffixIcon,
             fillColor: AppColors.whiteColor,
             filled: true,
             contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),

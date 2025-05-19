@@ -4,6 +4,7 @@ import '../utils/app_sizes.dart';
 import '../utils/app_text_styles.dart';
 import '../widgets/custom_button.dart';
 import '../views/register.dart';
+import '../views/log_in.dart';
 
 class StartView extends StatelessWidget {
   const StartView({super.key});
@@ -31,7 +32,12 @@ class StartView extends StatelessWidget {
                 width: 200, // o el tamaño que quieras
                 description: "Ingresar",
                 onPressed: () {
-                  print("Ingresar presionado");
+                  Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const LoginView(),
+                  ),
+                );
                 },
               ),
             ),

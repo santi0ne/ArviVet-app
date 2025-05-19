@@ -3,8 +3,8 @@ import 'app_colors.dart';
 
 class AppTextStyles {
   static const TextStyle title = TextStyle(
-    fontSize: 28,
-    fontWeight: FontWeight.bold,
+    fontSize: 32,
+    fontWeight: FontWeight.w900,
     color: AppColors.fontColor,
   );
 
@@ -14,8 +14,8 @@ class AppTextStyles {
   );
 
   static const TextStyle inputLabel = TextStyle(
-    fontSize: 14,
-    fontWeight: FontWeight.w500,
+    fontSize: 20,
+    fontWeight: FontWeight.w600,
     color: AppColors.fontColor,
   );
 
@@ -35,5 +35,9 @@ class AppTextStyles {
     fontSize: 18,
     color: AppColors.textColor,
   );
-}
 
+  static const TextStyle hint = TextStyle(
+  fontSize: 18,
+  color: Colors.black45,
+);
+}
