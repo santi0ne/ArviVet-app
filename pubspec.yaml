@@ -1,6 +1,6 @@
 name: arvivet_app
 description: "A new Flutter project."
-publish_to: 'none'
+publish_to: "none"
 version: 0.1.0
 
 environment:
@@ -9,6 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_svg: ^2.0.7
 
 dev_dependencies:
   flutter_test:
@@ -17,3 +18,10 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/background.jpg
+    - assets/images/
+  fonts:
+  - family: RobotoFlex
+    fonts:
+      - asset: assets/fonts/RobotoFlex-Variable.ttf

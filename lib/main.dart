@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:arvivet_app/views/log_in.dart';
+import 'package:arvivet_app/views/start.dart';
+import 'package:arvivet_app/views/register.dart';
+
 
 void main() {
   runApp(const MainApp());
@@ -6,15 +10,18 @@ void main() {
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
-
+//entry point
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
+    return MaterialApp(
+      title: "ArviVet App",
+      theme: ThemeData(
+        fontFamily: 'RobotoFlex', 
       ),
+      home: StartView(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
+
+

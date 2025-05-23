@@ -1,0 +1,2 @@
+C:/Espol/8vosemestre/Ing2/Proyecto/ArviVet-app/android/app/.cxx/RelWithDebInfo/6974l404/x86_64/CMakeFiles/edit_cache.dir
+C:/Espol/8vosemestre/Ing2/Proyecto/ArviVet-app/android/app/.cxx/RelWithDebInfo/6974l404/x86_64/CMakeFiles/rebuild_cache.dir
