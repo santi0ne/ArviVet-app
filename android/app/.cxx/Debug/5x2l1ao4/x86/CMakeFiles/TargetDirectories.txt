@@ -1,0 +1,2 @@
+C:/Users/nicol/Documents/ArviVet-app/android/app/.cxx/Debug/5x2l1ao4/x86/CMakeFiles/edit_cache.dir
+C:/Users/nicol/Documents/ArviVet-app/android/app/.cxx/Debug/5x2l1ao4/x86/CMakeFiles/rebuild_cache.dir

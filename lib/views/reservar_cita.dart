@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
 
 class ReservarCita extends StatelessWidget{
   const ReservarCita({super.key});
@@ -7,7 +9,7 @@ class ReservarCita extends StatelessWidget{
   Widget build(BuildContext context){
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'Asignación de citas',
           style: TextStyle(
             color: Colors.black,
@@ -16,7 +18,17 @@ class ReservarCita extends StatelessWidget{
           ),
         ),
         backgroundColor: Colors.white,
-        centerTitle: true,
+        leading: Container(
+          margin: const EdgeInsets.all(10),
+          decoration: BoxDecoration(
+            color: Color(0xFF),
+            borderRadius: BorderRadius.circular(10)
+          ),
+          child: SvgPicture.asset('assets/images/campana_notificacion.svg',
+          width: 20,
+          height: 20,),
+        ),
+        
       ),
     );
   }
