@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../utils/app_colors.dart';
-import '../utils/app_sizes.dart';
-import '../utils/app_text_styles.dart';
+import '../../utils/app_colors.dart';
+import '../../utils/app_sizes.dart';
+import '../../utils/app_text_styles.dart';
 
 //boton reutilizable necesita el texto y la funcion
 class CustomButton extends StatelessWidget {

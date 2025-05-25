@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../utils/app_colors.dart';
 import '../utils/app_sizes.dart';
 import '../utils/app_text_styles.dart';
-import '../ui/custom_button.dart';
+import '../widgets/ui/custom_button.dart';
 import 'register.dart';
 import 'log_in.dart';
 

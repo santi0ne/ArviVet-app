@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import '../utils/app_colors.dart';
 import '../utils/app_sizes.dart';
 import '../utils/app_text_styles.dart';
-import '../ui/custom_button.dart';
-import '../ui/custom_underline_input.dart';
+import '../widgets/ui/custom_button.dart';
+import '../widgets/ui/custom_underline_input.dart';
 
 
 class RegisterView extends StatefulWidget {
