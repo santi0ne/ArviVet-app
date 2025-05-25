@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import '../utils/app_colors.dart';
 import '../utils/app_sizes.dart';
 import '../utils/app_text_styles.dart';
-import '../widgets/custom_button.dart';
-import '../widgets/custom_input.dart';
+import '../ui/custom_button.dart';
+import '../ui/custom_input.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
