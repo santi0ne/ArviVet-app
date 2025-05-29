@@ -21,22 +21,22 @@ class CustomSpecialtyDropdown extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.whiteColor,
         borderRadius: BorderRadius.circular(15),
-        border: Border.all(color: Colors.grey.shade300, width: 1.0),
-        boxShadow: [
+        border: Border.all(color: AppColors.borderColor, width: 1.0),
+        boxShadow: const [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.1),
+            color: AppColors.boxShadowColor,
             spreadRadius: 1,
             blurRadius: 5,
-            offset: const Offset(0, 3), // changes position of shadow
+            offset: Offset(0, 3), // changes position of shadow
           ),
         ],
       ),
       child: DropdownButtonHideUnderline(
         child: DropdownButton<Specialty>(
           value: selectedSpecialty,
-          icon: Icon(Icons.keyboard_arrow_down, color: AppColors.primaryGreen), // Icono de flecha
+          icon: const Icon(Icons.keyboard_arrow_down, color: AppColors.primaryGreen), // Icono de flecha
           isExpanded: true,
           onChanged: onChanged,
           items: specialties.map((Specialty specialty) {
@@ -48,12 +48,12 @@ class CustomSpecialtyDropdown extends StatelessWidget {
                     specialty.iconPath,
                     width: 24,
                     height: 24,
-                    colorFilter: ColorFilter.mode(AppColors.primaryGreen, BlendMode.srcIn), // Color del ícono en la lista
+                    colorFilter: const ColorFilter.mode(AppColors.primaryGreen, BlendMode.srcIn), // Color del ícono en la lista
                   ),
                   const SizedBox(width: 10),
                   Text(
                     specialty.name,
-                    style: const TextStyle(fontSize: 16, color: Colors.black87),
+                    style: const TextStyle(fontSize: 16, color: AppColors.fontColor),
                   ),
                 ],
               ),
@@ -68,12 +68,12 @@ class CustomSpecialtyDropdown extends StatelessWidget {
                     specialty.iconPath,
                     width: 24,
                     height: 24,
-                    colorFilter: ColorFilter.mode(AppColors.primaryGreen, BlendMode.srcIn), // Color del ícono seleccionado
+                    colorFilter: const ColorFilter.mode(AppColors.primaryGreen, BlendMode.srcIn), // Color del ícono seleccionado
                   ),
                   const SizedBox(width: 10),
                   Text(
                     specialty.name,
-                    style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black),
+                    style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: AppColors.fontColor),
                   ),
                 ],
               );
