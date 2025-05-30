@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import '../utils/app_colors.dart';
 import '../utils/app_sizes.dart';
 import '../utils/app_text_styles.dart';
-import '../widgets/custom_button.dart';
-import '../views/register.dart';
-import '../views/log_in.dart';
+import '../widgets/ui/custom_button.dart';
+import 'register.dart';
+import 'log_in.dart';
+import 'home.dart';
 
 class StartView extends StatelessWidget {
   const StartView({super.key});
@@ -27,17 +28,18 @@ class StartView extends StatelessWidget {
             const SizedBox(height: 34),
 
             // Botón "Ingresar"
-            Center( // ✅ centra el botón sin obligar a ocupar todo el ancho
+            Center(
+              // ✅ centra el botón sin obligar a ocupar todo el ancho
               child: CustomButton(
                 width: 200, // o el tamaño que quieras
                 description: "Ingresar",
                 onPressed: () {
                   Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const LoginView(),
-                  ),
-                );
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const LoginView(),
+                    ),
+                  );
                 },
               ),
             ),

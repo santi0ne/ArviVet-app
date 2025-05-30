@@ -7,7 +7,6 @@ import 'package:arvivet_app/widgets/reserva_cita/specialty.dart';
 import '../widgets/reserva_cita/customSpecialtyDropdown.dart';
 import 'package:arvivet_app/widgets/reserva_cita/custom_appbar.dart';
 
-
 class ReservarCita extends StatefulWidget {
   const ReservarCita({super.key});
 
@@ -40,9 +39,9 @@ class _ReservarCitaState extends State<ReservarCita> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text('Escoge la especialidad:', style: AppTextStyles.inputLabel),
+            const Text('Escoge la especialidad:',
+                style: AppTextStyles.inputLabel),
             const SizedBox(height: 10),
-
             CustomSpecialtyDropdown(
               specialties: _specialties,
               selectedSpecialty: _selectedSpecialty,
@@ -54,18 +53,15 @@ class _ReservarCitaState extends State<ReservarCita> {
                 }
               },
             ),
-
             const SizedBox(height: 30),
-
             Center(
               child: Text(
                 'Especialidad seleccionada: ${_selectedSpecialty.name}',
-                style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                style:
+                    const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
             ),
-
             const SizedBox(height: 20),
-
             Container(
               height: 200,
               width: double.infinity,
@@ -83,7 +79,6 @@ class _ReservarCitaState extends State<ReservarCita> {
                 },
               ),
             ),
-
             const SizedBox(height: 20),
             _DoctorInfoCard(),
             const SizedBox(height: 20),
@@ -94,7 +89,6 @@ class _ReservarCitaState extends State<ReservarCita> {
     );
   }
 }
-
 
 class _DoctorInfoCard extends StatelessWidget {
   const _DoctorInfoCard();
