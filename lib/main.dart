@@ -1,3 +1,4 @@
+import 'package:arvivet_app/views/reservar_cita.dart';
 import 'package:flutter/material.dart';
 import 'package:arvivet_app/views/log_in.dart';
 import 'package:arvivet_app/views/start.dart';
@@ -18,7 +19,7 @@ class MainApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: 'RobotoFlex',
       ),
-      home: StartView(),
+      home: ReservarCita(),
       debugShowCheckedModeBanner: false,
     );
   }
