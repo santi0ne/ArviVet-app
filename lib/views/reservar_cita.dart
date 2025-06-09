@@ -1,0 +1,132 @@
+import 'package:arvivet_app/widgets/reserva_cita/custom_calendar.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:arvivet_app/utils/app_colors.dart';
+import 'package:arvivet_app/utils/app_text_styles.dart';
+import 'package:arvivet_app/widgets/reserva_cita/specialty.dart';
+import '../widgets/reserva_cita/customSpecialtyDropdown.dart';
+import 'package:arvivet_app/widgets/reserva_cita/custom_appbar.dart';
+
+import '../widgets/reserva_cita/doctor_info_card.dart';
+
+
+class ReservarCita extends StatefulWidget {
+  const ReservarCita({super.key});
+
+  @override
+  State<ReservarCita> createState() => _ReservarCitaState();
+}
+
+class _ReservarCitaState extends State<ReservarCita> {
+  static final List<Specialty> fixedSpecialties = [
+    Specialty(name: 'Laboratorio', iconPath: 'assets/images/microscopio.svg'),
+    Specialty(name: 'Vacunacion', iconPath: 'assets/images/vacuna.svg'),
+    Specialty(name: 'Veterinario', iconPath: 'assets/images/veterinario.svg'),
+  ];
+
+  Specialty? _selectedSpecialty;
+  DateTime? _selectedDate;
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: const CustomAppBar(),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+                'Escoge la especialidad:', style: AppTextStyles.inputLabel),
+            const SizedBox(height: 10),
+
+            CustomSpecialtyDropdown(
+              specialties: fixedSpecialties,
+              selectedSpecialty: _selectedSpecialty ?? fixedSpecialties.first,
+              onChanged: (Specialty? newSpecialtySelected) {
+                if (newSpecialtySelected != null) {
+                  setState(() {
+                    _selectedSpecialty = newSpecialtySelected;
+                  });
+                }
+              },
+            ),
+
+            const SizedBox(height: 20),
+
+            Container(
+              height: 310,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                color: Colors.grey[200],
+                borderRadius: BorderRadius.circular(15),
+              ),
+              alignment: Alignment.center,
+              child:
+              _selectedSpecialty != null ?
+              CustomCalendar(
+                initialDate: DateTime.now(),
+                userPickedDate: (fecha) {
+                  setState(() {
+                    _selectedDate = fecha;
+                  });
+                },
+              ) : const SizedBox.shrink(),
+            ),
+
+            const SizedBox(height: 20),
+            Container(
+              child:
+              _selectedDate != null ?
+              DoctorInfoCard(
+                doctorName: 'Dr. Nicolas Sierra',
+                clinicLocation: 'Sucursal centro',
+                doctorImagePath: 'assets/images/doctor.jpeg',
+                availableTimeSlots: getAvailableSlotsFor(_selectedDate),
+              ) : const SizedBox.shrink(),
+            ),
+
+            const SizedBox(height: 30),
+            _ScheduleButton(),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+  List<String> getAvailableSlotsFor(DateTime? date) {
+    if (date == null) return [];
+    // Ejemplo fijo para probar
+    return [
+      '09:00 AM', '10:30 AM', '01:00 PM', '03:00 PM'
+    ];
+  }
+
+
+class _ScheduleButton extends StatelessWidget {
+  const _ScheduleButton();
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: ElevatedButton(
+        onPressed: () {
+          // Acción para agendar cita
+        },
+        style: ElevatedButton.styleFrom(
+          backgroundColor: AppColors.primaryGreen,
+          padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+        ),
+        child: const Text(
+          'Agendar cita',
+          style: AppTextStyles.button,
+        ),
+      ),
+    );
+  }
+}

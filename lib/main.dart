@@ -18,7 +18,7 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       title: "ArviVet App",
       theme: ThemeData(
-        fontFamily: 'RobotoFlex', 
+        fontFamily: 'RobotoFlex',
       ),
       //home: const StartView(),
       home: const MainLayout(),
@@ -26,5 +26,3 @@ class MainApp extends StatelessWidget {
     );
   }
 }
-
-
