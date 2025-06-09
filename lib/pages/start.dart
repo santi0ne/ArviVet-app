@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import '../utils/app_colors.dart';
 import '../utils/app_sizes.dart';
 import '../utils/app_text_styles.dart';
-import '../widgets/custom_button.dart';
-import '../views/register.dart';
-import '../views/log_in.dart';
+import '../widgets/ui/custom_button.dart';
+import 'register.dart';
+import 'log_in.dart';
 
 class StartView extends StatelessWidget {
   const StartView({super.key});

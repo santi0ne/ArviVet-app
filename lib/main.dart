@@ -1,7 +1,9 @@
+import 'package:arvivet_app/pages/home.dart';
+import 'package:arvivet_app/layout.dart';
 import 'package:flutter/material.dart';
-import 'package:arvivet_app/views/log_in.dart';
-import 'package:arvivet_app/views/start.dart';
-import 'package:arvivet_app/views/register.dart';
+import 'package:arvivet_app/pages/log_in.dart';
+import 'package:arvivet_app/pages/start.dart';
+import 'package:arvivet_app/pages/register.dart';
 
 
 void main() {
@@ -18,7 +20,8 @@ class MainApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: 'RobotoFlex',
       ),
-      home: StartView(),
+      //home: const StartView(),
+      home: const MainLayout(),
       debugShowCheckedModeBanner: false,
     );
   }
