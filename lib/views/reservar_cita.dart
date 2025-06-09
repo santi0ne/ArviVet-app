@@ -87,7 +87,7 @@ class _ReservarCitaState extends State<ReservarCita> {
               ) : const SizedBox.shrink(),
             ),
 
-            const SizedBox(height: 20),
+            const SizedBox(height: 30),
             _ScheduleButton(),
           ],
         ),

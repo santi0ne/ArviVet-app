@@ -47,7 +47,7 @@ class DoctorInfoCard extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           ),
-          const SizedBox(width: 15),
+          const SizedBox(width: 40),
 
 
           Expanded(
