@@ -9,9 +9,6 @@ class CustomSpecialtyDropdown extends StatelessWidget {
   final Specialty selectedSpecialty;
   final ValueChanged<Specialty?> onChanged;
 
-
-
-
   const CustomSpecialtyDropdown({
     super.key,
     required this.specialties,
@@ -84,10 +81,7 @@ class CustomSpecialtyDropdown extends StatelessWidget {
             }).toList();
           },
         ),
-
       ),
-
-
     );
   }
 }

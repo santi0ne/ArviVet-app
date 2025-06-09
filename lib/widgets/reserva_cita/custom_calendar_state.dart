@@ -22,6 +22,12 @@ class CustomCalendarState extends State<CustomCalendar> {
           selectedDayHighlightColor: AppColors.primaryGreen,
           weekdayLabels: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
           weekdayLabelTextStyle: AppTextStyles.muted,
+
+          calendarViewMode: CalendarDatePicker2Mode.month,
+          firstDayOfWeek: 1, //Empieza en lunes
+          controlsTextStyle: AppTextStyles.hint,
+          disabledDayTextStyle: const TextStyle(color: Colors.grey),
+          currentDate: widget.initialDate ?? DateTime.now(),
           firstDayOfWeek: 1,
             selectedDayTextStyle: const TextStyle(
               color: Colors.white,

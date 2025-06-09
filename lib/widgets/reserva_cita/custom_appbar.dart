@@ -1,3 +1,4 @@
+
 import 'package:arvivet_app/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -20,6 +21,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         'Asignación de citas',
         style: AppTextStyles.subtitle,
       ),
+
       backgroundColor: AppColors.whiteColor,
       leading: GestureDetector(
         onTap: onBack ?? () => Navigator.of(context).pop(),
@@ -28,6 +30,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           alignment: Alignment.center,
           decoration: BoxDecoration(
             color: AppColors.whiteColor,
+
             borderRadius: BorderRadius.circular(10),
           ),
           child: SvgPicture.asset(
@@ -57,6 +60,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       ],
     );
   }
+
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);

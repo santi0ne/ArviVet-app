@@ -5,6 +5,7 @@ import 'package:arvivet_app/pages/schedule.dart';
 import 'package:arvivet_app/utils/app_colors.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:arvivet_app/pages/reservar_cita.dart';
 
 class MainLayout extends StatefulWidget {
   const MainLayout({super.key});
@@ -14,7 +15,6 @@ class MainLayout extends StatefulWidget {
 }
 
 class _MainLayoutState extends State<MainLayout> {
-
   final List<IconData> icons = [
     Icons.home_rounded,
     Icons.calendar_today_rounded,
@@ -22,7 +22,7 @@ class _MainLayoutState extends State<MainLayout> {
     Icons.person_rounded,
   ];
 
-  int index = 0;  // comienza en la pagina de home
+  int index = 0; // comienza en la pagina de home
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +61,7 @@ class _MainLayoutState extends State<MainLayout> {
         widget = const HomePage();
         break;
       case 1:
-        widget = const ScheduleAppointmentPage();
+        widget = const ReservarCita();
         break;
       case 2:
         widget = const VetHistorialPage();
@@ -75,5 +75,4 @@ class _MainLayoutState extends State<MainLayout> {
     }
     return widget;
   }
-
 }
