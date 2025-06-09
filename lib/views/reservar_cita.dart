@@ -7,6 +7,8 @@ import 'package:arvivet_app/widgets/reserva_cita/specialty.dart';
 import '../widgets/reserva_cita/customSpecialtyDropdown.dart';
 import 'package:arvivet_app/widgets/reserva_cita/custom_appbar.dart';
 
+import '../widgets/reserva_cita/doctor_info_card.dart';
+
 
 class ReservarCita extends StatefulWidget {
   const ReservarCita({super.key});
@@ -16,20 +18,15 @@ class ReservarCita extends StatefulWidget {
 }
 
 class _ReservarCitaState extends State<ReservarCita> {
-  final List<Specialty> _specialties = [
+  static final List<Specialty> fixedSpecialties = [
     Specialty(name: 'Laboratorio', iconPath: 'assets/images/microscopio.svg'),
     Specialty(name: 'Vacunacion', iconPath: 'assets/images/vacuna.svg'),
     Specialty(name: 'Veterinario', iconPath: 'assets/images/veterinario.svg'),
   ];
 
-  late Specialty _selectedSpecialty;
+  Specialty? _selectedSpecialty;
   DateTime? _selectedDate;
 
-  @override
-  void initState() {
-    super.initState();
-    _selectedSpecialty = _specialties.first;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,52 +37,56 @@ class _ReservarCitaState extends State<ReservarCita> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text('Escoge la especialidad:', style: AppTextStyles.inputLabel),
+            const Text(
+                'Escoge la especialidad:', style: AppTextStyles.inputLabel),
             const SizedBox(height: 10),
 
             CustomSpecialtyDropdown(
-              specialties: _specialties,
-              selectedSpecialty: _selectedSpecialty,
-              onChanged: (Specialty? newValue) {
-                if (newValue != null) {
+              specialties: fixedSpecialties,
+              selectedSpecialty: _selectedSpecialty ?? fixedSpecialties.first,
+              onChanged: (Specialty? newSpecialtySelected) {
+                if (newSpecialtySelected != null) {
                   setState(() {
-                    _selectedSpecialty = newValue;
+                    _selectedSpecialty = newSpecialtySelected;
                   });
                 }
               },
             ),
 
-            const SizedBox(height: 30),
-
-            Center(
-              child: Text(
-                'Especialidad seleccionada: ${_selectedSpecialty.name}',
-                style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              ),
-            ),
-
             const SizedBox(height: 20),
 
             Container(
-              height: 200,
+              height: 310,
               width: double.infinity,
               decoration: BoxDecoration(
                 color: Colors.grey[200],
                 borderRadius: BorderRadius.circular(15),
               ),
               alignment: Alignment.center,
-              child: CustomCalendar(
+              child:
+              _selectedSpecialty != null ?
+              CustomCalendar(
                 initialDate: DateTime.now(),
                 userPickedDate: (fecha) {
                   setState(() {
                     _selectedDate = fecha;
                   });
                 },
-              ),
+              ) : const SizedBox.shrink(),
             ),
 
             const SizedBox(height: 20),
-            _DoctorInfoCard(),
+            Container(
+              child:
+              _selectedDate != null ?
+              DoctorInfoCard(
+                doctorName: 'Dr. Nicolas Sierra',
+                clinicLocation: 'Sucursal centro',
+                doctorImagePath: 'assets/images/doctor.jpeg',
+                availableTimeSlots: getAvailableSlotsFor(_selectedDate),
+              ) : const SizedBox.shrink(),
+            ),
+
             const SizedBox(height: 20),
             _ScheduleButton(),
           ],
@@ -95,27 +96,14 @@ class _ReservarCitaState extends State<ReservarCita> {
   }
 }
 
-
-class _DoctorInfoCard extends StatelessWidget {
-  const _DoctorInfoCard();
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 150,
-      width: double.infinity,
-      decoration: BoxDecoration(
-        color: Colors.grey[200],
-        borderRadius: BorderRadius.circular(15),
-      ),
-      alignment: Alignment.center,
-      child: const Text(
-        'Aquí iría la información del doctor',
-        style: TextStyle(color: Colors.grey),
-      ),
-    );
+  List<String> getAvailableSlotsFor(DateTime? date) {
+    if (date == null) return [];
+    // Ejemplo fijo para probar
+    return [
+      '09:00 AM', '10:30 AM', '01:00 PM', '03:00 PM'
+    ];
   }
-}
+
 
 class _ScheduleButton extends StatelessWidget {
   const _ScheduleButton();

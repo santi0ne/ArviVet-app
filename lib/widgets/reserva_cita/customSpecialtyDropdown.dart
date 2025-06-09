@@ -9,12 +9,16 @@ class CustomSpecialtyDropdown extends StatelessWidget {
   final Specialty selectedSpecialty;
   final ValueChanged<Specialty?> onChanged;
 
+
+
+
   const CustomSpecialtyDropdown({
     super.key,
     required this.specialties,
     required this.selectedSpecialty,
     required this.onChanged,
   });
+
 
   @override
   Widget build(BuildContext context) {
@@ -80,7 +84,10 @@ class CustomSpecialtyDropdown extends StatelessWidget {
             }).toList();
           },
         ),
+
       ),
+
+
     );
   }
 }
