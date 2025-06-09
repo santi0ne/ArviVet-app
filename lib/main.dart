@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:arvivet_app/views/log_in.dart';
 import 'package:arvivet_app/views/start.dart';
 import 'package:arvivet_app/views/register.dart';
-import 'package:arvivet_app/views/reservar_cita.dart';
 
 
 void main() {
@@ -17,12 +16,10 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       title: "ArviVet App",
       theme: ThemeData(
-        fontFamily: 'RobotoFlex', 
+        fontFamily: 'RobotoFlex',
       ),
-      home: ReservarCita(),
+      home: StartView(),
       debugShowCheckedModeBanner: false,
     );
   }
 }
-
-
