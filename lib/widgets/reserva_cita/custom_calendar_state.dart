@@ -17,31 +17,29 @@ class CustomCalendarState extends State<CustomCalendar> {
   @override
   Widget build(BuildContext context) {
     return CalendarDatePicker2(
-        config: CalendarDatePicker2Config(
+      config: CalendarDatePicker2Config(
           calendarType: CalendarDatePicker2Type.single,
           selectedDayHighlightColor: AppColors.primaryGreen,
           weekdayLabels: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
           weekdayLabelTextStyle: AppTextStyles.muted,
-
-          calendarViewMode: CalendarDatePicker2Mode.month,
           firstDayOfWeek: 1,
-            selectedDayTextStyle: const TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-            ),
+          selectedDayTextStyle: const TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
           controlsTextStyle: AppTextStyles.hint,
           disabledDayTextStyle: const TextStyle(color: Colors.grey),
           currentDate: widget.initialDate ?? DateTime.now(),
           disableVibration: true,
           disableMonthPicker: true
-        ),
-        value: _selectedDatesToShow,
-        onValueChanged: (dates){
-          DateTime? newSelectedDate = dates.isNotEmpty ? dates.first : null;
-          setState(() {
-            _selectedDatesToShow = dates;
-          });
-          widget.userPickedDate(newSelectedDate);
-        },);
-    }
+      ),
+      value: _selectedDatesToShow,
+      onValueChanged: (dates){
+        DateTime? newSelectedDate = dates.isNotEmpty ? dates.first : null;
+        setState(() {
+          _selectedDatesToShow = dates;
+        });
+        widget.userPickedDate(newSelectedDate);
+      },);
+  }
 }
