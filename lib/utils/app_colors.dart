@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class AppColors {
   //green for buttons
   static const Color primaryGreen = Color(0xFF87ad51);
+  static const Color primaryBlue = Color(0X297aa6);
   //for background
   static const Color whiteColor = Color(0xFFFAFAFB);
   //for fonts
@@ -15,6 +16,4 @@ class AppColors {
   //error background and for error
   static const Color errorBorderColor = Color(0xFFb05151);
   static const Color textColor = Color(0xFF2878A2);
-  
 }
-
