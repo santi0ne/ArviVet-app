@@ -6,6 +6,7 @@ import 'package:arvivet_app/utils/app_colors.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:arvivet_app/pages/reservar_cita.dart';
+import 'package:arvivet_app/pages/cuenta.dart';
 
 class MainLayout extends StatefulWidget {
   const MainLayout({super.key});
@@ -67,7 +68,7 @@ class _MainLayoutState extends State<MainLayout> {
         widget = const VetHistorialPage();
         break;
       case 3:
-        widget = const AboutPage();
+        widget = const CuentaPage();
         break;
       default:
         widget = const HomePage();
