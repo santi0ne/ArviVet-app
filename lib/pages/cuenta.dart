@@ -9,8 +9,8 @@ class CuentaPage extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          SvgPicture.asset(
-            'assets/images/cuenta/Fondo_cuenta_png.png',
+          Image.asset(
+            'assets/images/cuenta/Fondo_cuenta_png.jpg',
             fit: BoxFit.cover,
             width: double.infinity,
             height: double.infinity,
