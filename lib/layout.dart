@@ -1,5 +1,5 @@
 import 'package:arvivet_app/pages/about.dart';
-import 'package:arvivet_app/pages/historial.dart';
+import 'package:arvivet_app/pages/medicalHistory.dart';
 import 'package:arvivet_app/pages/home.dart';
 import 'package:arvivet_app/pages/schedule.dart';
 import 'package:arvivet_app/utils/app_colors.dart';
