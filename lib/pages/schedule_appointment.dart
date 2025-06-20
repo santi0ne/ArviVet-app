@@ -61,16 +61,21 @@ class _ScheduleAppointmentState extends State<ScheduleAppointment> {
                 borderRadius: BorderRadius.circular(15),
               ),
               alignment: Alignment.center,
-              child:
-              _selectedSpecialty != null ?
-              CustomCalendar(
-                initialDate: DateTime.now(),
-                userPickedDate: (fecha) {
-                  setState(() {
-                    _selectedDate = fecha;
-                  });
+              child: Builder(
+                builder: (context){
+                  return _selectedSpecialty != null
+                      ? CustomCalendar(
+                        key: const Key('custom_calendar'),
+                        initialDate: DateTime.now(),
+                        userPickedDate: (fecha) {
+                          setState(() {
+                            _selectedDate = fecha;
+                          });
+                        },
+                      ) : const SizedBox.shrink();
                 },
-              ) : const SizedBox.shrink(),
+              ),
+
             ),
 
             const SizedBox(height: 20),
