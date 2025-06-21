@@ -6,19 +6,20 @@ import 'package:arvivet_app/utils/app_text_styles.dart';
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback? onBack;
   final VoidCallback? onNotification;
+  final String label;
 
   const CustomAppBar({
     super.key,
     this.onBack,
-    this.onNotification,
+    this.onNotification, required this.label,
   });
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: const Text(
-        'Asignación de citas',
-        style: AppTextStyles.subtitle,
+      title: Text(
+        label,
+        style: AppTextStyles.inputLabel,
       ),
 
       backgroundColor: AppColors.whiteColor,
