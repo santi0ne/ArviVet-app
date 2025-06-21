@@ -1,12 +1,12 @@
 import 'package:arvivet_app/widgets/schedule_appointment//custom_calendar.dart';
+import 'package:arvivet_app/widgets/ui/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:arvivet_app/utils/app_colors.dart';
 import 'package:arvivet_app/utils/app_text_styles.dart';
 import 'package:arvivet_app/widgets/schedule_appointment/specialty.dart';
 import '../widgets/schedule_appointment/customSpecialtyDropdown.dart';
-import 'package:arvivet_app/widgets/schedule_appointment/custom_appbar.dart';
+import 'package:arvivet_app/widgets/ui/custom_appbar.dart';
 import '../widgets/schedule_appointment/doctor_info_card.dart';
-
 
 class ScheduleAppointment extends StatefulWidget {
   const ScheduleAppointment({super.key});
@@ -25,18 +25,19 @@ class _ScheduleAppointmentState extends State<ScheduleAppointment> {
   Specialty? _selectedSpecialty;
   DateTime? _selectedDate;
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(),
+      appBar: const CustomAppBar(
+        label: 'Asignación de Citas',
+      ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-                'Escoge la especialidad:', style: AppTextStyles.inputLabel),
+            const Text('Escoge la especialidad:',
+                style: AppTextStyles.inputLabel),
             const SizedBox(height: 10),
 
             CustomSpecialtyDropdown(
@@ -61,32 +62,38 @@ class _ScheduleAppointmentState extends State<ScheduleAppointment> {
                 borderRadius: BorderRadius.circular(15),
               ),
               alignment: Alignment.center,
-              child:
-              _selectedSpecialty != null ?
-              CustomCalendar(
-                initialDate: DateTime.now(),
-                userPickedDate: (fecha) {
-                  setState(() {
-                    _selectedDate = fecha;
-                  });
-                },
-              ) : const SizedBox.shrink(),
+              child: _selectedSpecialty != null
+                  ? CustomCalendar(
+                      initialDate: DateTime.now(),
+                      userPickedDate: (fecha) {
+                        setState(() {
+                          _selectedDate = fecha;
+                        });
+                      },
+                    )
+                  : const SizedBox.shrink(),
             ),
 
             const SizedBox(height: 20),
             Container(
-              child:
-              _selectedDate != null ?
-              DoctorInfoCard(
-                doctorName: 'Dr. Nicolas Sierra',
-                clinicLocation: 'Sucursal centro',
-                doctorImagePath: 'assets/images/doctor.jpeg',
-                availableTimeSlots: getAvailableSlotsFor(_selectedDate),
-              ) : const SizedBox.shrink(),
+              child: _selectedDate != null
+                  ? DoctorInfoCard(
+                      doctorName: 'Dr. Nicolas Sierra',
+                      clinicLocation: 'Sucursal centro',
+                      doctorImagePath: 'assets/images/doctor.jpeg',
+                      availableTimeSlots: getAvailableSlotsFor(_selectedDate),
+                    )
+                  : const SizedBox.shrink(),
             ),
 
             const SizedBox(height: 30),
-            _ScheduleButton(),
+            //_ScheduleButton(),
+            Center(
+                child: CustomButton(
+                    description: 'Agendar cita',
+                    onPressed: () {},
+                    primaryColor: AppColors.primaryGreen,
+                    width: 150))
           ],
         ),
       ),
@@ -97,34 +104,5 @@ class _ScheduleAppointmentState extends State<ScheduleAppointment> {
 List<String> getAvailableSlotsFor(DateTime? date) {
   if (date == null) return [];
   // Ejemplo fijo para probar
-  return [
-    '09:00 AM', '10:30 AM', '01:00 PM', '03:00 PM'
-  ];
-}
-
-
-class _ScheduleButton extends StatelessWidget {
-  const _ScheduleButton();
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: ElevatedButton(
-        onPressed: () {
-          // Acción para agendar cita
-        },
-        style: ElevatedButton.styleFrom(
-          backgroundColor: AppColors.primaryGreen,
-          padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-        ),
-        child: const Text(
-          'Agendar cita',
-          style: AppTextStyles.button,
-        ),
-      ),
-    );
-  }
+  return ['09:00 AM', '10:30 AM', '01:00 PM', '03:00 PM'];
 }

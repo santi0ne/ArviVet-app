@@ -1,5 +1,6 @@
 import 'package:arvivet_app/utils/app_colors.dart';
 import 'package:arvivet_app/utils/app_sizes.dart';
+import 'package:arvivet_app/widgets/ui/custom_button.dart';
 import 'package:flutter/material.dart';
 
 class HomePromotions extends StatelessWidget {
@@ -48,24 +49,7 @@ class HomePromotions extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 4),
-                ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.whiteColor,
-                    foregroundColor: const Color(0xFF4A90A4),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(25),
-                    ),
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-                  ),
-                  child: const Text(
-                    'Separa tu cita',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold
-                    ),
-                  ),
-                ),
+                CustomButton(description: 'Separa tu cita', onPressed: () {  }, width: 150, primaryColor: AppColors.textColor,)
               ],
             ),
           ),
