@@ -1,7 +1,6 @@
 import 'package:arvivet_app/pages/about.dart';
 import 'package:arvivet_app/pages/medical_history.dart';
 import 'package:arvivet_app/pages/home.dart';
-import 'package:arvivet_app/pages/schedule.dart';
 import 'package:arvivet_app/utils/app_colors.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';

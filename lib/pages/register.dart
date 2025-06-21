@@ -84,6 +84,7 @@ class _RegisterViewState extends State<RegisterView> {
                   onPressed: () {
                     // Acción de registro
                   },
+                  primaryColor: AppColors.primaryGreen,
                 ),
               ),
 

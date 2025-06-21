@@ -106,6 +106,7 @@ class _LoginViewState extends State<LoginView> {
                           );
                           // Acción al iniciar sesión
                         },
+                        primaryColor: AppColors.primaryGreen,
                       ),
                     ),
                   ),

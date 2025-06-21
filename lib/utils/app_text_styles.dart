@@ -10,7 +10,7 @@ class AppTextStyles {
 
   static const TextStyle subtitle = TextStyle(
     fontSize: 24,
-    color: Colors.black87,
+    color: AppColors.textColor,
   );
 
   static const TextStyle inputLabel = TextStyle(

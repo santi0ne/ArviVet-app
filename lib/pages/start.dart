@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import '../utils/app_colors.dart';
-import '../utils/app_sizes.dart';
 import '../utils/app_text_styles.dart';
 import '../widgets/ui/custom_button.dart';
 import 'register.dart';
 import 'log_in.dart';
-import 'home.dart';
 
 class StartView extends StatelessWidget {
   const StartView({super.key});
@@ -41,6 +39,7 @@ class StartView extends StatelessWidget {
                     ),
                   );
                 },
+                primaryColor: AppColors.primaryGreen,
               ),
             ),
 
