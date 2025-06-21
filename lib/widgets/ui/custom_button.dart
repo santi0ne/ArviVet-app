@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../utils/app_colors.dart';
 import '../../utils/app_sizes.dart';
-import '../../utils/app_text_styles.dart';
 
 //boton reutilizable necesita el texto y la funcion
 class CustomButton extends StatelessWidget {
@@ -9,13 +8,17 @@ class CustomButton extends StatelessWidget {
   final VoidCallback onPressed;
   final double? width;
   final double? height;
+  final Color primaryColor;
+
   const CustomButton({
     super.key,
+    this.width,
+    this.height, 
     required this.description,
     required this.onPressed,
-    this.width,
-    this.height,
+    required this.primaryColor, 
   });
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -23,7 +26,7 @@ class CustomButton extends StatelessWidget {
       height: height ?? AppSizes.buttonHeight,
       child: ElevatedButton(
           style: ElevatedButton.styleFrom(
-              backgroundColor: AppColors.primaryGreen,
+              backgroundColor: primaryColor,
               elevation: 8,
               shadowColor: AppColors.boxShadowColor,
               padding: EdgeInsets.zero,
@@ -33,7 +36,7 @@ class CustomButton extends StatelessWidget {
           child: Text(
             description,
             style: const TextStyle(
-              fontSize: 24,
+              fontSize: 18,
               fontWeight: FontWeight.bold,
               color: AppColors.whiteColor,
               decoration: TextDecoration.none,
