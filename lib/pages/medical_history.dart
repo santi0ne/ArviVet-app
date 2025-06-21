@@ -1,3 +1,4 @@
+import 'package:arvivet_app/widgets/ui/custom_appbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -92,22 +93,7 @@ class _VetHistorialPageState extends State<VetHistorialPage> {
 
     return Scaffold(
       backgroundColor: AppColors.whiteColor,
-      appBar: AppBar(
-        backgroundColor: AppColors.whiteColor,
-        elevation: 0,
-        automaticallyImplyLeading: false,
-        title: const Text(
-          'Historial de citas',
-          style: TextStyle(color: Colors.black87, fontWeight: FontWeight.bold),
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.notifications_none, color: Colors.black54),
-            onPressed: () {},
-          ),
-          const SizedBox(width: 4),
-        ],
-      ),
+      appBar: const CustomAppBar(label: 'Historial de Citas'),
       body: Column(
         children: [
           Padding(
