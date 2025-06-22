@@ -60,7 +60,7 @@ class _MainLayoutState extends State<MainLayout> {
         widget = const HomePage();
         break;
       case 1:
-        widget = const ScheduleAppointment();
+        widget = const VetHistorialPage();
         break;
       case 2:
         widget = const VetHistorialPage();

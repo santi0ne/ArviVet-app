@@ -7,6 +7,7 @@ import 'package:arvivet_app/widgets/schedule_appointment/specialty.dart';
 import '../widgets/schedule_appointment/customSpecialtyDropdown.dart';
 import 'package:arvivet_app/widgets/ui/custom_appbar.dart';
 import '../widgets/schedule_appointment/doctor_info_card.dart';
+import '../widgets/schedule_appointment/show_confirmation_dialog.dart';
 
 class ScheduleAppointment extends StatefulWidget {
   const ScheduleAppointment({super.key});
@@ -94,11 +95,23 @@ class _ScheduleAppointmentState extends State<ScheduleAppointment> {
             const SizedBox(height: 30),
             //_ScheduleButton(),
             Center(
-                child: CustomButton(
-                    description: 'Agendar cita',
-                    onPressed: () {},
-                    primaryColor: AppColors.primaryGreen,
-                    width: 150))
+                child: _selectedDate != null
+                    ? CustomButton(
+                      description: 'Reservar cita',
+                      onPressed: () {
+                        showConfirmationDialog(
+                          context: context,
+                          dateTime: _selectedDate!,
+                          type: _selectedSpecialty?.name ?? 'Especialidad',
+                          doctor: 'Dr. Nicolás Sierra',
+                          location: 'Sucursal centro',
+                        );
+                      },
+                      primaryColor: AppColors.primaryGreen,
+                      width: 150
+                    )
+                    : const SizedBox.shrink(),
+            )
           ],
         ),
       ),

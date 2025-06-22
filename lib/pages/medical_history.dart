@@ -1,8 +1,11 @@
+import 'package:arvivet_app/pages/schedule_appointment.dart';
+import 'package:arvivet_app/widgets/schedule_appointment/show_confirmation_dialog.dart';
 import 'package:arvivet_app/widgets/ui/custom_appbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../utils/app_colors.dart';
+import '../widgets/ui/custom_button.dart';
 
 class Appointment {
   final DateTime dateTime;
@@ -128,8 +131,8 @@ class _VetHistorialPageState extends State<VetHistorialPage> {
                   _fechaSeleccionada == null
                       ? 'Todas las fechas'
                       : 'Desde: ${DateFormat('dd/MM/yyyy').format(_fechaSeleccionada!)}',
-                  style: const TextStyle(
-                      fontSize: 14, fontWeight: FontWeight.w500),
+                  style:
+                  const TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
                 ),
                 Row(
                   children: [
@@ -171,17 +174,38 @@ class _VetHistorialPageState extends State<VetHistorialPage> {
           Expanded(
             child: appointments.isEmpty
                 ? const Center(
-                    child: Text("No hay citas para la fecha seleccionada"),
-                  )
+              child: Text("No hay citas para la fecha seleccionada"),
+            )
                 : ListView.separated(
-                    padding: const EdgeInsets.symmetric(horizontal: 24),
-                    itemCount: appointments.length,
-                    separatorBuilder: (_, __) => const SizedBox(height: 14),
-                    itemBuilder: (_, i) => _AppointmentCard(
-                      appt: appointments[i],
-                      upcoming: isUpcoming,
+              padding: const EdgeInsets.fromLTRB(24, 0, 24, 20),
+              itemCount: appointments.length,
+              separatorBuilder: (_, __) => const SizedBox(height: 14),
+              itemBuilder: (_, i) => _AppointmentCard(
+                appt: appointments[i],
+                upcoming: _segment == 0,
+              ),
+            ),
+          ),
+          Container(
+            color: Colors.white, // fondo blanco
+            padding: const EdgeInsets.only(
+              top: 8,
+              bottom: 16,
+            ),
+            child: Center(
+              child: CustomButton(
+                description: 'Agendar cita',
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const ScheduleAppointment(),
                     ),
-                  ),
+                  );
+                },
+                primaryColor: AppColors.primaryGreen,
+                width: 150,
+              ),
+            ),
           ),
         ],
       ),
@@ -211,9 +235,9 @@ class _AppointmentCard extends StatelessWidget {
           Container(
             width: 6,
             height: 110,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: AppColors.primaryBlue,
-              borderRadius: const BorderRadius.only(
+              borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(12),
                 bottomLeft: Radius.circular(12),
               ),
@@ -228,7 +252,7 @@ class _AppointmentCard extends StatelessWidget {
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Icon(Icons.calendar_month,
+                      const Icon(Icons.calendar_month,
                           size: 16, color: AppColors.primaryBlue),
                       const SizedBox(width: 4),
                       Expanded(
@@ -244,34 +268,12 @@ class _AppointmentCard extends StatelessWidget {
                               size: 18, color: Colors.green),
                           tooltip: 'Ver detalle',
                           onPressed: () {
-                            showDialog(
+                            showConfirmationDialog(
                               context: context,
-                              builder: (context) => AlertDialog(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
-                                title: const Text('Detalle de la cita'),
-                                content: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                        '📅 Fecha: ${dateFmt.format(appt.dateTime)}'),
-                                    Text(
-                                        '⏰ Hora: ${timeFmt.format(appt.dateTime).toUpperCase()}'),
-                                    Text('🩺 Tipo: ${appt.type}'),
-                                    Text('👨‍⚕️ Doctor: ${appt.doctor}'),
-                                    Text('📍 Lugar: ${appt.location}'),
-                                  ],
-                                ),
-                                actions: [
-                                  TextButton(
-                                    child: const Text('Cerrar'),
-                                    onPressed: () =>
-                                        Navigator.of(context).pop(),
-                                  ),
-                                ],
-                              ),
+                              dateTime: appt.dateTime,
+                              type: appt.type,
+                              doctor: appt.doctor,
+                              location: appt.location,
                             );
                           },
                         ),
@@ -330,7 +332,7 @@ class _AppointmentCard extends StatelessWidget {
                   const SizedBox(height: 4),
                   Row(
                     children: [
-                      Icon(Icons.person_pin,
+                      const Icon(Icons.person_pin,
                           size: 14, color: AppColors.primaryBlue),
                       const SizedBox(width: 4),
                       Expanded(
@@ -345,7 +347,7 @@ class _AppointmentCard extends StatelessWidget {
                   const SizedBox(height: 2),
                   Row(
                     children: [
-                      Icon(Icons.location_on_outlined,
+                      const Icon(Icons.location_on_outlined,
                           size: 14, color: AppColors.primaryBlue),
                       const SizedBox(width: 4),
                       Expanded(
