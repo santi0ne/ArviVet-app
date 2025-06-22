@@ -9,15 +9,18 @@ class CuentaPage extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          Image.asset(
-            'assets/images/cuenta/Fondo_cuenta_png.jpg',
-            fit: BoxFit.cover,
-            width: double.infinity,
-            height: double.infinity,
-          ),
+          Padding(
+              padding: const EdgeInsets.only(top: 0.01),
+              child: Image.asset(
+                'assets/images/cuenta/Fondo_cuenta_png.jpg',
+                fit: BoxFit.cover,
+                width: double.infinity,
+                height: double.infinity,
+                alignment: Alignment.topCenter,
+              )),
           SafeArea(
             child: SingleChildScrollView(
-              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+              padding: const EdgeInsets.symmetric(horizontal: 27, vertical: 16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
