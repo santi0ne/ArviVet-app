@@ -14,7 +14,7 @@ dependencies:
   flutter_svg: ^2.0.7
   flutter_localizations: # ← adds translated Material strings, etc.
     sdk: flutter
-  intl: ^0.19.0
+  intl: 0.20.2
 
 dev_dependencies:
   flutter_lints: ^4.0.0
