@@ -1,23 +1,22 @@
-import 'package:arvivet_app/widgets/schedule_appointment/doctor_info_card.dart';
-import 'package:arvivet_app/widgets/schedule_appointment/specialty.dart';
+import 'package:arvivet_app/pages/schedule_appointment.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter/material.dart';
 
 
-import '../Utils/widget_test_utils.dart';
+import 'Utils/widget_test_utils.dart';
 
 void main(){
   group('ScheduleAppointment Widget Tests', () {
 
     testWidgets('Renderiza correctamente la vista principal', (WidgetTester tester) async{
-      await loadScheduleAppointment(tester);
+      await loadPage(tester, const ScheduleAppointment());
 
       expect(find.text('Escoge la especialidad:'), findsOneWidget);
       expect(find.text('Agendar cita'), findsOneWidget);
     });
 
     testWidgets('Dropdown muestra las especialidades', (WidgetTester tester) async {
-      await loadScheduleAppointment(tester);
+      await loadPage(tester, const ScheduleAppointment());
       await openDropdown(tester);
 
       expect(find.text('Laboratorio'), findsWidgets);
@@ -28,7 +27,7 @@ void main(){
 
     testWidgets('Calendario aparece solo despues de seleccionar la especialidad',
             (WidgetTester tester) async {
-      await loadScheduleAppointment(tester);
+      await loadPage(tester, const ScheduleAppointment());
 
       expect(find.byKey(const Key('custom_calendar')), findsNothing);
 

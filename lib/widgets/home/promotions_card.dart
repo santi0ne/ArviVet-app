@@ -26,50 +26,53 @@ class HomePromotions extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.all(AppSizes.padding),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  'Profilaxis\nDental Básica',
-                  style: TextStyle(
-                    fontSize: 26,
-                    fontWeight: FontWeight.bold,
-                    color: AppColors.whiteColor,
-                    height: 1.2,
-                  ),
-                ),
-                const SizedBox(height: 4),
-                const Text(
-                  '¡La salud oral de tu mascota es\nimportante!',
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: AppColors.whiteColor,
-                    height: 1.3,
-                  ),
-                ),
-                const SizedBox(height: 4),
-                ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.whiteColor,
-                    foregroundColor: const Color(0xFF4A90A4),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(25),
-                    ),
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-                  ),
-                  child: const Text(
-                    'Separa tu cita',
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'Profilaxis\nDental Básica',
                     style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold
+                      fontSize: 26,
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.whiteColor,
+                      height: 1.2,
                     ),
                   ),
-                ),
-              ],
+                  const SizedBox(height: 4),
+                  const Text(
+                    '¡La salud oral de tu mascota es\nimportante!',
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: AppColors.whiteColor,
+                      height: 1.3,
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColors.whiteColor,
+                      foregroundColor: const Color(0xFF4A90A4),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(25),
+                      ),
+                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                    ),
+                    child: const Text(
+                      'Separa tu cita',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
-          
+
+
           // imagen de perro
           Positioned(
             right: 10,

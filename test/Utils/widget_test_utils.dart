@@ -1,12 +1,12 @@
+import 'package:arvivet_app/layout.dart';
+import 'package:arvivet_app/pages/home.dart';
 import 'package:arvivet_app/pages/schedule_appointment.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-Future<void> loadScheduleAppointment(WidgetTester tester) async {
+Future<void> loadPage(WidgetTester tester, Widget widget) async {
   await tester.pumpWidget(
-    const MaterialApp(
-      home: ScheduleAppointment(),
-    ),
+    MaterialApp(home: widget),
   );
   await tester.pumpAndSettle();
 }
@@ -22,6 +22,15 @@ Future<void> selectedSpecialty(WidgetTester tester, String specialtyName) async 
   await tester.tap(find.text(specialtyName).last);
   await tester.pumpAndSettle();
 }
+
+Future<void> tapBottomNavIcon(WidgetTester tester, IconData icon) async {
+  final finder = find.byIcon(icon);
+  expect(finder, findsOneWidget, reason: 'No se encontró el ícono $icon en el BottomNavigationBar');
+  await tester.tap(finder);
+  await tester.pumpAndSettle();
+}
+
+
 
 
 
