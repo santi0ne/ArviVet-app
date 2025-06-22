@@ -1,6 +1,6 @@
-import 'package:arvivet_app/pages/about.dart';
+import 'package:arvivet_app/pages/about/about.dart';
 import 'package:arvivet_app/pages/home.dart';
-import 'package:arvivet_app/pages/medicalHistory.dart';
+import 'package:arvivet_app/pages/medical_history.dart';
 import 'package:arvivet_app/pages/schedule_appointment.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter/material.dart';

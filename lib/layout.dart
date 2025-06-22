@@ -1,19 +1,24 @@
-import 'package:arvivet_app/pages/about.dart';
-import 'package:arvivet_app/pages/medical_history.dart';
+import 'package:arvivet_app/pages/about/about.dart';
 import 'package:arvivet_app/pages/home.dart';
+import 'package:arvivet_app/pages/medical_history.dart';
+import 'package:arvivet_app/pages/schedule_appointment.dart';
 import 'package:arvivet_app/utils/app_colors.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:arvivet_app/pages/schedule_appointment.dart';
 
 class MainLayout extends StatefulWidget {
-  const MainLayout({super.key});
+  final int initialIndex;
+  final Widget? overridePage;
+
+  const MainLayout({super.key, this.initialIndex = 0, this.overridePage});
 
   @override
   State<StatefulWidget> createState() => _MainLayoutState();
 }
 
 class _MainLayoutState extends State<MainLayout> {
+  late int index;
+
   final List<IconData> icons = [
     Icons.home_rounded,
     Icons.calendar_today_rounded,
@@ -21,15 +26,17 @@ class _MainLayoutState extends State<MainLayout> {
     Icons.person_rounded,
   ];
 
-  int index = 0; // comienza en la pagina de home
+  @override
+  void initState() {
+    super.initState();
+    index = widget.initialIndex;
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.whiteColor,
-      body: Container(
-        child: getSelectedPage(index: index),
-      ),
+      body: widget.overridePage ?? getSelectedPage(index: index),
       bottomNavigationBar: CurvedNavigationBar(
         items: List.generate(icons.length, (i) {
           final isSelected = i == index;
@@ -54,24 +61,17 @@ class _MainLayoutState extends State<MainLayout> {
   }
 
   Widget getSelectedPage({required int index}) {
-    Widget widget;
     switch (index) {
       case 0:
-        widget = const HomePage();
-        break;
+        return const HomePage();
       case 1:
-        widget = const ScheduleAppointment();
-        break;
+        return const ScheduleAppointment();
       case 2:
-        widget = const VetHistorialPage();
-        break;
+        return const VetHistorialPage();
       case 3:
-        widget = const AboutPage();
-        break;
+        return const AboutPage();
       default:
-        widget = const HomePage();
-        break;
+        return const HomePage();
     }
-    return widget;
   }
 }

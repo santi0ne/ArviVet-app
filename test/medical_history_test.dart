@@ -1,6 +1,6 @@
+import 'package:arvivet_app/pages/medical_history.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:arvivet_app/pages/medicalHistory.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'Utils/widget_test_utils.dart';
 
