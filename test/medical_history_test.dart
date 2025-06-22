@@ -12,7 +12,7 @@ void main() {
   });
 
   group('VetHistorialPage Tests', () {
-    testWidgets('Renderiza los componentes principales', (WidgetTester tester) async {
+    testWidgets('Render main screen and components', (WidgetTester tester) async {
       await loadPage(tester, const VetHistorialPage());
 
 
@@ -24,7 +24,7 @@ void main() {
       expect(find.text('Vacuna'), findsOneWidget);
     });
 
-    testWidgets('Cambia a sección Completadas al seleccionar el slider', (WidgetTester tester) async {
+    testWidgets('Show completed appointments', (WidgetTester tester) async {
       await loadPage(tester, const VetHistorialPage());
 
 
@@ -38,7 +38,7 @@ void main() {
       expect(find.text('Vacuna'), findsNothing);
     });
 
-    testWidgets('Cambia de vuelta a Próximas desde Completadas', (WidgetTester tester) async {
+    testWidgets('Show upcoming appointments', (WidgetTester tester) async {
       await loadPage(tester, const VetHistorialPage());
 
 

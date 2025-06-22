@@ -15,7 +15,7 @@ void main(){
     await initializeDateFormatting('es', null); // 👈 carga los datos del locale español
   });
   group('Layout page tests', (){
-    testWidgets('Renderiza MainLayout y navbar correctamente', (WidgetTester tester) async {
+    testWidgets('Render main layout and navbar', (WidgetTester tester) async {
       await loadPage(tester, const MainLayout());
 
       expect(find.byType(MainLayout), findsOneWidget);
@@ -24,19 +24,19 @@ void main(){
       expect(find.byType(HomePage), findsOneWidget);
     });
 
-    testWidgets('Navega a ScheduleAppointment al tocar el icono de calendario', (WidgetTester tester) async {
+    testWidgets('Navigate to the Schedule Appointment section', (WidgetTester tester) async {
       await loadPage(tester, const MainLayout());
       await tapBottomNavIcon(tester, Icons.calendar_today_rounded);
       expect(find.byType(ScheduleAppointment), findsOneWidget);
     });
 
-    testWidgets('Navega a VetHistorialPage al tocar ícono de carpeta', (WidgetTester tester) async {
+    testWidgets('Navigate to the Medical History section', (WidgetTester tester) async {
       await loadPage(tester, const MainLayout());
       await tapBottomNavIcon(tester, Icons.folder_open_rounded);
       expect(find.byType(VetHistorialPage), findsOneWidget);
     });
 
-    testWidgets('Navega a AboutPage al tocar ícono de persona', (WidgetTester tester) async {
+    testWidgets('Navigate to the About me section', (WidgetTester tester) async {
       await loadPage(tester, const MainLayout());
       await tapBottomNavIcon(tester, Icons.person_rounded);
       expect(find.byType(AboutPage), findsOneWidget);

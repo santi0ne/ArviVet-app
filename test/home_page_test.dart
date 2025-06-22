@@ -9,7 +9,7 @@ import 'Utils/widget_test_utils.dart';
 
 void main() {
   group('HomePage Widget Test', () {
-    testWidgets('Renderiza todos los widgets principales del HomePage', (WidgetTester tester) async {
+    testWidgets('Render all primary widgets', (WidgetTester tester) async {
       await loadPage(tester, const HomePage());
 
       expect(find.byType(HomeHeader), findsOneWidget);
@@ -18,7 +18,7 @@ void main() {
       expect(find.byType(HomeScheduledAppointments), findsOneWidget);
     });
 
-    testWidgets('Renderiza textos clave esperados en HomePromotions', (WidgetTester tester) async {
+    testWidgets('Render key texts on HomePromotions', (WidgetTester tester) async {
       await loadPage(tester, const HomePage());
 
       expect(find.text('Profilaxis\nDental Básica'), findsOneWidget);

@@ -8,14 +8,14 @@ import 'Utils/widget_test_utils.dart';
 void main(){
   group('ScheduleAppointment Widget Tests', () {
 
-    testWidgets('Renderiza correctamente la vista principal', (WidgetTester tester) async{
+    testWidgets('Render main schedule appointment view', (WidgetTester tester) async{
       await loadPage(tester, const ScheduleAppointment());
 
       expect(find.text('Escoge la especialidad:'), findsOneWidget);
       expect(find.text('Agendar cita'), findsOneWidget);
     });
 
-    testWidgets('Dropdown muestra las especialidades', (WidgetTester tester) async {
+    testWidgets('Dropdown menu shows available specialties', (WidgetTester tester) async {
       await loadPage(tester, const ScheduleAppointment());
       await openDropdown(tester);
 
@@ -25,7 +25,7 @@ void main(){
 
     });
 
-    testWidgets('Calendario aparece solo despues de seleccionar la especialidad',
+    testWidgets('Calendar widget appears only after selecting desired specialty',
             (WidgetTester tester) async {
       await loadPage(tester, const ScheduleAppointment());
 
