@@ -1,3 +1,4 @@
+import 'package:arvivet_app/utils/general.dart';
 import 'package:flutter/material.dart';
 
 class EditAboutPersonalInfo extends StatefulWidget {
@@ -34,27 +35,6 @@ class EditAboutPersonalInfoState extends State<EditAboutPersonalInfo> {
     };
 
     return datos;
-  }
-
-  Widget buildInput(String label, TextEditingController controller) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(label),
-          const SizedBox(height: 4),
-          TextField(
-            controller: controller,
-            decoration: const InputDecoration(
-              border: OutlineInputBorder(),
-              contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-              isDense: true,
-            ),
-          ),
-        ],
-      ),
-    );
   }
 
   @override
