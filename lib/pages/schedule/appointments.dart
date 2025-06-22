@@ -1,11 +1,11 @@
-import 'package:arvivet_app/pages/schedule_appointment.dart';
+import 'package:arvivet_app/pages/schedule/schedule_appointment.dart';
 import 'package:arvivet_app/widgets/schedule_appointment/show_appointment_dialog.dart';
 import 'package:arvivet_app/widgets/ui/custom_appbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import '../utils/app_colors.dart';
-import '../widgets/ui/custom_button.dart';
+import '../../utils/app_colors.dart';
+import '../../widgets/ui/custom_button.dart';
 
 class Appointment {
   final DateTime dateTime;
@@ -95,7 +95,6 @@ class _AppointmentsPageState extends State<AppointmentsPage> {
             .toList();
 
     return Scaffold(
-      backgroundColor: AppColors.whiteColor,
       appBar: const CustomAppBar(label: 'Historial de Citas'),
       body: Column(
         children: [

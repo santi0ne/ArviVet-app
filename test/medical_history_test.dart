@@ -1,4 +1,4 @@
-import 'package:arvivet_app/pages/appointments.dart';
+import 'package:arvivet_app/pages/schedule/appointments.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:intl/date_symbol_data_local.dart';
