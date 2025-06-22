@@ -1,4 +1,3 @@
-
 import 'package:arvivet_app/utils/app_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:arvivet_app/utils/app_colors.dart';
@@ -13,7 +12,8 @@ Future<void> showAppointmentDialog({
   bool isConfirmation = false,
   VoidCallback? onConfirm,
 }) {
-  final String title = isConfirmation ? '¿Desea confirmar la cita?' : 'Detalle de la cita';
+  final String title =
+      isConfirmation ? '¿Desea confirmar la cita?' : 'Detalle de la cita';
   final String? confirmButtonLabel = isConfirmation ? 'Confirmar cita' : null;
 
   return showDialog(
@@ -27,7 +27,7 @@ Future<void> showAppointmentDialog({
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('📅 Fecha: ${date.day}/${date.month}/${date.year}') ,
+          Text('📅 Fecha: ${date.day}/${date.month}/${date.year}'),
           Text('⏰ Hora: $time'),
           Text('🩺 Tipo: $type'),
           Text('👨‍⚕️ Doctor: $doctor'),
@@ -44,9 +44,7 @@ Future<void> showAppointmentDialog({
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.primaryGreen,
             ),
-            child: Text(confirmButtonLabel!,
-            style: AppTextStyles.button
-            ),
+            child: Text(confirmButtonLabel!, style: AppTextStyles.button),
             onPressed: () {
               Navigator.pop(context);
               onConfirm();

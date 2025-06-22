@@ -5,7 +5,6 @@ import '../utils/app_text_styles.dart';
 import '../widgets/ui/custom_button.dart';
 import '../widgets/ui/custom_underline_input.dart';
 
-
 class RegisterView extends StatefulWidget {
   const RegisterView({super.key});
 
@@ -31,7 +30,8 @@ class _RegisterViewState extends State<RegisterView> {
     return Scaffold(
       backgroundColor: AppColors.whiteColor,
       body: SafeArea(
-        child: SingleChildScrollView( // 🔁 Agrega scroll por si el teclado cubre algo
+        child: SingleChildScrollView(
+          // 🔁 Agrega scroll por si el teclado cubre algo
           child: Padding(
             padding: const EdgeInsets.all(AppSizes.padding),
             child: Column(
@@ -78,16 +78,15 @@ class _RegisterViewState extends State<RegisterView> {
 
                 // Botón Crear Cuenta
                 Center(
-                child: CustomButton(
-                  width: 200, // o el tamaño que desees
-                  description: 'Crear Cuenta',
-                  onPressed: () {
-                    // Acción de registro
-                  },
-                  primaryColor: AppColors.primaryGreen,
+                  child: CustomButton(
+                    width: 200, // o el tamaño que desees
+                    description: 'Crear Cuenta',
+                    onPressed: () {
+                      // Acción de registro
+                    },
+                    primaryColor: AppColors.primaryGreen,
+                  ),
                 ),
-              ),
-
 
                 const SizedBox(height: 40),
               ],

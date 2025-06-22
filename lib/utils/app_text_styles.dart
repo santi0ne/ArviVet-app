@@ -37,7 +37,7 @@ class AppTextStyles {
   );
 
   static const TextStyle hint = TextStyle(
-  fontSize: 18,
-  color: Colors.black45,
-);
+    fontSize: 18,
+    color: Colors.black45,
+  );
 }

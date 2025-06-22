@@ -29,7 +29,7 @@ class AboutPets extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) => const MainLayout(
-                      initialIndex: 3, 
+                      initialIndex: 3,
                       overridePage: MyPetsPage(),
                     ),
                   ),

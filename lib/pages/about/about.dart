@@ -49,9 +49,7 @@ class _AboutPageState extends State<AboutPage> {
               const SizedBox(height: 20),
               const AboutHeader(),
               const SizedBox(height: 8),
-
               AboutPersonalInfo(info: personalInfo),
-
               const SizedBox(height: 20),
               CustomButton(
                 description: 'Editar',

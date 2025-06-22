@@ -5,11 +5,11 @@ import 'package:flutter/material.dart';
 import 'custom_calendar.dart';
 
 class CustomCalendarState extends State<CustomCalendar> {
-  List<DateTime?>_selectedDatesToShow = [];
+  List<DateTime?> _selectedDatesToShow = [];
   @override
-  void initState(){
+  void initState() {
     super.initState();
-    if(widget.initialDate != null){
+    if (widget.initialDate != null) {
       _selectedDatesToShow = [widget.initialDate];
     }
   }
@@ -31,15 +31,15 @@ class CustomCalendarState extends State<CustomCalendar> {
           disabledDayTextStyle: const TextStyle(color: Colors.grey),
           currentDate: widget.initialDate ?? DateTime.now(),
           disableVibration: true,
-          disableMonthPicker: true
-      ),
+          disableMonthPicker: true),
       value: _selectedDatesToShow,
-      onValueChanged: (dates){
+      onValueChanged: (dates) {
         DateTime? newSelectedDate = dates.isNotEmpty ? dates.first : null;
         setState(() {
           _selectedDatesToShow = dates;
         });
         widget.userPickedDate(newSelectedDate);
-      },);
+      },
+    );
   }
 }

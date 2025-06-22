@@ -13,10 +13,10 @@ class CustomButton extends StatelessWidget {
   const CustomButton({
     super.key,
     this.width,
-    this.height, 
+    this.height,
     required this.description,
     required this.onPressed,
-    required this.primaryColor, 
+    required this.primaryColor,
   });
 
   @override

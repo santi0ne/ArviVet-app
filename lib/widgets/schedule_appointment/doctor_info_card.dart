@@ -74,7 +74,8 @@ class _DoctorInfoCardState extends State<DoctorInfoCard> {
                         widget.onTimeSelected(time);
                       },
                       child: Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 10, vertical: 6),
                         decoration: BoxDecoration(
                           color: isSelected
                               ? AppColors.primaryBlue

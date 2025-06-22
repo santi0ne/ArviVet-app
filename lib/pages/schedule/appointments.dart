@@ -130,8 +130,8 @@ class _AppointmentsPageState extends State<AppointmentsPage> {
                   _fechaSeleccionada == null
                       ? 'Todas las fechas'
                       : 'Desde: ${DateFormat('dd/MM/yyyy').format(_fechaSeleccionada!)}',
-                  style:
-                  const TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+                  style: const TextStyle(
+                      fontSize: 14, fontWeight: FontWeight.w500),
                 ),
                 Row(
                   children: [
@@ -173,17 +173,17 @@ class _AppointmentsPageState extends State<AppointmentsPage> {
           Expanded(
             child: appointments.isEmpty
                 ? const Center(
-              child: Text("No hay citas para la fecha seleccionada"),
-            )
+                    child: Text("No hay citas para la fecha seleccionada"),
+                  )
                 : ListView.separated(
-              padding: const EdgeInsets.fromLTRB(24, 0, 24, 20),
-              itemCount: appointments.length,
-              separatorBuilder: (_, __) => const SizedBox(height: 14),
-              itemBuilder: (_, i) => _AppointmentCard(
-                appt: appointments[i],
-                upcoming: _segment == 0,
-              ),
-            ),
+                    padding: const EdgeInsets.fromLTRB(24, 0, 24, 20),
+                    itemCount: appointments.length,
+                    separatorBuilder: (_, __) => const SizedBox(height: 14),
+                    itemBuilder: (_, i) => _AppointmentCard(
+                      appt: appointments[i],
+                      upcoming: _segment == 0,
+                    ),
+                  ),
           ),
           Container(
             color: Colors.white, // fondo blanco
@@ -270,7 +270,9 @@ class _AppointmentCard extends StatelessWidget {
                             showAppointmentDialog(
                               context: context,
                               date: appt.dateTime,
-                              time: DateFormat('HH:mm a', 'es_ES').format(appt.dateTime).toUpperCase(),
+                              time: DateFormat('HH:mm a', 'es_ES')
+                                  .format(appt.dateTime)
+                                  .toUpperCase(),
                               type: appt.type,
                               doctor: appt.doctor,
                               location: appt.location,

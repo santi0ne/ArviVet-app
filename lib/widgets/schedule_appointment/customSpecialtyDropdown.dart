@@ -16,7 +16,6 @@ class CustomSpecialtyDropdown extends StatelessWidget {
     required this.onChanged,
   });
 
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -38,7 +37,8 @@ class CustomSpecialtyDropdown extends StatelessWidget {
         child: DropdownButton<Specialty>(
           key: const Key('specialty_dropdown'),
           value: selectedSpecialty,
-          icon: const Icon(Icons.keyboard_arrow_down, color: AppColors.primaryGreen), // Icono de flecha
+          icon: const Icon(Icons.keyboard_arrow_down,
+              color: AppColors.primaryGreen), // Icono de flecha
           isExpanded: true,
           onChanged: onChanged,
           items: specialties.map((Specialty specialty) {
@@ -50,12 +50,14 @@ class CustomSpecialtyDropdown extends StatelessWidget {
                     specialty.iconPath,
                     width: 24,
                     height: 24,
-                    colorFilter: const ColorFilter.mode(AppColors.primaryGreen, BlendMode.srcIn), // Color del ícono en la lista
+                    colorFilter: const ColorFilter.mode(AppColors.primaryGreen,
+                        BlendMode.srcIn), // Color del ícono en la lista
                   ),
                   const SizedBox(width: 10),
                   Text(
                     specialty.name,
-                    style: const TextStyle(fontSize: 16, color: AppColors.fontColor),
+                    style: const TextStyle(
+                        fontSize: 16, color: AppColors.fontColor),
                   ),
                 ],
               ),
@@ -70,12 +72,16 @@ class CustomSpecialtyDropdown extends StatelessWidget {
                     specialty.iconPath,
                     width: 24,
                     height: 24,
-                    colorFilter: const ColorFilter.mode(AppColors.primaryGreen, BlendMode.srcIn), // Color del ícono seleccionado
+                    colorFilter: const ColorFilter.mode(AppColors.primaryGreen,
+                        BlendMode.srcIn), // Color del ícono seleccionado
                   ),
                   const SizedBox(width: 10),
                   Text(
                     specialty.name,
-                    style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: AppColors.fontColor),
+                    style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: AppColors.fontColor),
                   ),
                 ],
               );

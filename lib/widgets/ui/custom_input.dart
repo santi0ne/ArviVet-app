@@ -38,7 +38,8 @@ class CustomInput extends StatelessWidget {
             suffixIcon: suffixIcon,
             fillColor: AppColors.whiteColor,
             filled: true,
-            contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+            contentPadding:
+                const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(AppSizes.radiusInput),
               borderSide: BorderSide(color: AppColors.borderColor),

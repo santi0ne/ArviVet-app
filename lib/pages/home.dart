@@ -10,11 +10,11 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: SafeArea(child: SingleChildScrollView(
+      body: SafeArea(
+          child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-
             // Header
             HomeHeader(),
             SizedBox(height: 10),
@@ -30,11 +30,9 @@ class HomePage extends StatelessWidget {
             // seccion de citas agendadas
             HomeScheduledAppointments(),
             // const SizedBox(height: 100),
-
           ],
         ),
       )),
     );
   }
-
 }

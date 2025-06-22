@@ -27,7 +27,6 @@ class _ScheduleAppointmentState extends State<ScheduleAppointment> {
   DateTime? _selectedDate;
   String? _selectedHour;
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,44 +65,44 @@ class _ScheduleAppointmentState extends State<ScheduleAppointment> {
               ),
               alignment: Alignment.center,
               child: Builder(
-                builder: (context){
+                builder: (context) {
                   return _selectedSpecialty != null
                       ? CustomCalendar(
-                        key: const Key('custom_calendar'),
-                        initialDate: DateTime.now(),
-                        userPickedDate: (fecha) {
-                          setState(() {
-                            _selectedDate = fecha;
-                          });
-                        },
-                      ) : const SizedBox.shrink();
+                          key: const Key('custom_calendar'),
+                          initialDate: DateTime.now(),
+                          userPickedDate: (fecha) {
+                            setState(() {
+                              _selectedDate = fecha;
+                            });
+                          },
+                        )
+                      : const SizedBox.shrink();
                 },
               ),
-
             ),
 
             const SizedBox(height: 20),
             Container(
               child: _selectedDate != null
                   ? DoctorInfoCard(
-                    doctorName: 'Dr. Nicolas Sierra',
-                    clinicLocation: 'Sucursal centro',
-                    doctorImagePath: 'assets/images/doctor.jpeg',
-                    availableTimeSlots: getAvailableSlotsFor(_selectedDate),
-                    onTimeSelected: (time) {
-                      setState(() {
-                        _selectedHour = time;
-                      });
-                    },
-                  )
+                      doctorName: 'Dr. Nicolas Sierra',
+                      clinicLocation: 'Sucursal centro',
+                      doctorImagePath: 'assets/images/doctor.jpeg',
+                      availableTimeSlots: getAvailableSlotsFor(_selectedDate),
+                      onTimeSelected: (time) {
+                        setState(() {
+                          _selectedHour = time;
+                        });
+                      },
+                    )
                   : const SizedBox.shrink(),
             ),
 
             const SizedBox(height: 30),
             //_ScheduleButton(),
             Center(
-                child: _selectedDate != null && _selectedHour != null
-                    ? CustomButton(
+              child: _selectedDate != null && _selectedHour != null
+                  ? CustomButton(
                       description: 'Reservar cita',
                       onPressed: () {
                         showAppointmentDialog(
@@ -125,9 +124,8 @@ class _ScheduleAppointmentState extends State<ScheduleAppointment> {
                         );
                       },
                       primaryColor: AppColors.primaryGreen,
-                      width: 150
-                    )
-                    : const SizedBox.shrink(),
+                      width: 150)
+                  : const SizedBox.shrink(),
             )
           ],
         ),

@@ -73,5 +73,4 @@ class HomeScheduledAppointments extends StatelessWidget {
       ),
     );
   }
-
 }

@@ -8,7 +8,6 @@ class AboutHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-
         Container(
           width: 120,
           height: 120,
@@ -28,9 +27,7 @@ class AboutHeader extends StatelessWidget {
             backgroundImage: AssetImage('assets/images/pic.jpg'),
           ),
         ),
-
         const SizedBox(height: 20),
-
         const Text(
           'Hola, Usuario!',
           style: AppTextStyles.title,

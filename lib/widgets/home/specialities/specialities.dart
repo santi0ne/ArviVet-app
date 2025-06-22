@@ -31,16 +31,39 @@ class HomeSpecialities extends StatelessWidget {
             crossAxisSpacing: 15,
             mainAxisSpacing: 20,
             children: const [
-              HomeSpecialitiesItem(icon: Icons.biotech, title: 'Laboratorio', color: AppColors.primaryGreen),
-              HomeSpecialitiesItem(icon: Icons.medical_services, title: 'Profilaxis', color: AppColors.primaryGreen),
-              HomeSpecialitiesItem(icon: Icons.pets, title: 'Consulta general', color: AppColors.primaryGreen),
-              HomeSpecialitiesItem(icon: Icons.content_cut, title: 'Peluquería', color: AppColors.primaryGreen),
-              HomeSpecialitiesItem(icon: Icons.healing, title: 'Desparasitación', color: AppColors.primaryGreen),
-              HomeSpecialitiesItem(icon: Icons.local_hospital, title: 'Cirugía', color: AppColors.primaryGreen),
-              HomeSpecialitiesItem(icon: Icons.vaccines, title: 'Vacunas', color: AppColors.primaryGreen),
-              HomeSpecialitiesItem(icon: Icons.restaurant, title: 'Alimentos', color: AppColors.primaryGreen),
+              HomeSpecialitiesItem(
+                  icon: Icons.biotech,
+                  title: 'Laboratorio',
+                  color: AppColors.primaryGreen),
+              HomeSpecialitiesItem(
+                  icon: Icons.medical_services,
+                  title: 'Profilaxis',
+                  color: AppColors.primaryGreen),
+              HomeSpecialitiesItem(
+                  icon: Icons.pets,
+                  title: 'Consulta general',
+                  color: AppColors.primaryGreen),
+              HomeSpecialitiesItem(
+                  icon: Icons.content_cut,
+                  title: 'Peluquería',
+                  color: AppColors.primaryGreen),
+              HomeSpecialitiesItem(
+                  icon: Icons.healing,
+                  title: 'Desparasitación',
+                  color: AppColors.primaryGreen),
+              HomeSpecialitiesItem(
+                  icon: Icons.local_hospital,
+                  title: 'Cirugía',
+                  color: AppColors.primaryGreen),
+              HomeSpecialitiesItem(
+                  icon: Icons.vaccines,
+                  title: 'Vacunas',
+                  color: AppColors.primaryGreen),
+              HomeSpecialitiesItem(
+                  icon: Icons.restaurant,
+                  title: 'Alimentos',
+                  color: AppColors.primaryGreen),
             ],
-
           ),
         ),
       ],
