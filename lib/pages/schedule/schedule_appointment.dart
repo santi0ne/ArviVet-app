@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:arvivet_app/utils/app_colors.dart';
 import 'package:arvivet_app/utils/app_text_styles.dart';
 import 'package:arvivet_app/widgets/schedule_appointment/specialty.dart';
-import '../widgets/schedule_appointment/customSpecialtyDropdown.dart';
+import '../../widgets/schedule_appointment/customSpecialtyDropdown.dart';
 import 'package:arvivet_app/widgets/ui/custom_appbar.dart';
-import '../widgets/schedule_appointment/doctor_info_card.dart';
-import '../widgets/schedule_appointment/show_appointment_dialog.dart';
+import '../../widgets/schedule_appointment/doctor_info_card.dart';
+import '../../widgets/schedule_appointment/show_appointment_dialog.dart';
 
 class ScheduleAppointment extends StatefulWidget {
   const ScheduleAppointment({super.key});

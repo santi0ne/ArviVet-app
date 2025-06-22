@@ -1,7 +1,7 @@
 import 'package:arvivet_app/pages/about/about.dart';
 import 'package:arvivet_app/pages/home.dart';
-import 'package:arvivet_app/pages/appointments.dart';
-import 'package:arvivet_app/pages/schedule_appointment.dart';
+import 'package:arvivet_app/pages/schedule/appointments.dart';
+import 'package:arvivet_app/pages/schedule/schedule_appointment.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter/material.dart';
 import 'package:arvivet_app/layout.dart';

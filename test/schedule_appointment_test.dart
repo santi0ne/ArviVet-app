@@ -1,4 +1,4 @@
-import 'package:arvivet_app/pages/schedule_appointment.dart';
+import 'package:arvivet_app/pages/schedule/schedule_appointment.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter/material.dart';
 
