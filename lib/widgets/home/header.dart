@@ -18,21 +18,20 @@ class HomeHeader extends StatelessWidget {
               color: Colors.grey[300],
               border: Border.all(color: Colors.grey[400]!, width: 2),
             ),
-            child: const Icon(
-              Icons.person,
-              size: 30,
-              color: Colors.grey,
+            child: const CircleAvatar(
+              radius: 58,
+              backgroundImage: AssetImage('assets/images/pic.jpg'),
             ),
           ),
           const SizedBox(width: 15),
-          
+
           // User Info
           const Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Cliente',
+                  '¡Hola, Jahir!',
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -50,7 +49,7 @@ class HomeHeader extends StatelessWidget {
               ],
             ),
           ),
-          
+
           // Notification Bell
           Stack(
             children: [

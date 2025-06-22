@@ -1,6 +1,6 @@
+import 'package:arvivet_app/pages/appointments.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:arvivet_app/pages/medicalHistory.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'Utils/widget_test_utils.dart';
 
@@ -13,7 +13,7 @@ void main() {
 
   group('VetHistorialPage Tests', () {
     testWidgets('Render main screen and components', (WidgetTester tester) async {
-      await loadPage(tester, const VetHistorialPage());
+      await loadPage(tester, const AppointmentsPage());
 
 
       expect(find.text('Historial de citas'), findsOneWidget);
@@ -25,7 +25,7 @@ void main() {
     });
 
     testWidgets('Show completed appointments', (WidgetTester tester) async {
-      await loadPage(tester, const VetHistorialPage());
+      await loadPage(tester, const AppointmentsPage());
 
 
       final completedTab = find.text('Completadas');
@@ -39,7 +39,7 @@ void main() {
     });
 
     testWidgets('Show upcoming appointments', (WidgetTester tester) async {
-      await loadPage(tester, const VetHistorialPage());
+      await loadPage(tester, const AppointmentsPage());
 
 
       await tester.tap(find.text('Completadas'));
