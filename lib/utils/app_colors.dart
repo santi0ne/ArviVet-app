@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class AppColors {
   //green for buttons
   static const Color primaryGreen = Color(0xFF87ad51);
-  static const Color primaryBlue = Color(0X297aa6);
+  static const Color primaryBlue = Color(0xff2a79a5);
   //for background
   static const Color whiteColor = Color(0xFFFAFAFB);
   //for fonts

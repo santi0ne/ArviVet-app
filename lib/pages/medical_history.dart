@@ -1,5 +1,5 @@
 import 'package:arvivet_app/pages/schedule_appointment.dart';
-import 'package:arvivet_app/widgets/schedule_appointment/show_confirmation_dialog.dart';
+import 'package:arvivet_app/widgets/schedule_appointment/show_appointment_dialog.dart';
 import 'package:arvivet_app/widgets/ui/custom_appbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -234,7 +234,7 @@ class _AppointmentCard extends StatelessWidget {
         children: [
           Container(
             width: 6,
-            height: 110,
+            height: 150,
             decoration: const BoxDecoration(
               color: AppColors.primaryBlue,
               borderRadius: BorderRadius.only(
@@ -268,9 +268,10 @@ class _AppointmentCard extends StatelessWidget {
                               size: 18, color: Colors.green),
                           tooltip: 'Ver detalle',
                           onPressed: () {
-                            showConfirmationDialog(
+                            showAppointmentDialog(
                               context: context,
-                              dateTime: appt.dateTime,
+                              date: appt.dateTime,
+                              time: DateFormat('HH:mm a', 'es_ES').format(appt.dateTime).toUpperCase(),
                               type: appt.type,
                               doctor: appt.doctor,
                               location: appt.location,
