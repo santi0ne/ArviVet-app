@@ -50,7 +50,6 @@ class _AboutPageState extends State<AboutPage> {
               const AboutHeader(),
               const SizedBox(height: 8),
 
-              /// ⬇️ Aquí pasamos los datos actualizados
               AboutPersonalInfo(info: personalInfo),
 
               const SizedBox(height: 20),

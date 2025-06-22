@@ -303,7 +303,6 @@ class _AppointmentCard extends StatelessWidget {
                                         backgroundColor: Colors.redAccent,
                                       ),
                                     );
-                                    // Aquí deberías implementar la lógica de eliminación real si usas estado externo
                                   },
                                 ),
                               ],
