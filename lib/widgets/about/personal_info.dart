@@ -3,7 +3,9 @@ import 'package:arvivet_app/utils/general.dart';
 import 'package:flutter/material.dart';
 
 class AboutPersonalInfo extends StatelessWidget {
-  const AboutPersonalInfo({super.key});
+  final Map<String, String> info;
+
+  const AboutPersonalInfo({super.key, required this.info});
 
   @override
   Widget build(BuildContext context) {
@@ -16,14 +18,12 @@ class AboutPersonalInfo extends StatelessWidget {
             style: AppTextStyles.subtitle,
           ),
         ),
-
         const SizedBox(height: 16),
-
-        buildInfoRow('Nombre completo', 'Jahir Díaz Cedeño'),
-        buildInfoRow('Cédula', '0952060396'),
-        buildInfoRow('Correo electrónico', 'jaalcede@espol.edu.ec'),
-        buildInfoRow('Celular', '+593 98 903 1804'),
-        buildInfoRow('Usuario', 'JDC1907'),
+        buildInfoRow('Nombre completo', info['nombre'] ?? ''),
+        buildInfoRow('Cédula', info['cedula'] ?? ''),
+        buildInfoRow('Correo electrónico', info['correo'] ?? ''),
+        buildInfoRow('Celular', info['celular'] ?? ''),
+        buildInfoRow('Usuario', info['usuario'] ?? ''),
       ],
     );
   }

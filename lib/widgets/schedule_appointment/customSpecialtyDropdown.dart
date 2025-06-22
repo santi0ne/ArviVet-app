@@ -36,6 +36,7 @@ class CustomSpecialtyDropdown extends StatelessWidget {
       ),
       child: DropdownButtonHideUnderline(
         child: DropdownButton<Specialty>(
+          key: const Key('specialty_dropdown'),
           value: selectedSpecialty,
           icon: const Icon(Icons.keyboard_arrow_down, color: AppColors.primaryGreen), // Icono de flecha
           isExpanded: true,

@@ -7,6 +7,7 @@ import 'package:arvivet_app/widgets/schedule_appointment/specialty.dart';
 import '../widgets/schedule_appointment/customSpecialtyDropdown.dart';
 import 'package:arvivet_app/widgets/ui/custom_appbar.dart';
 import '../widgets/schedule_appointment/doctor_info_card.dart';
+import '../widgets/schedule_appointment/show_appointment_dialog.dart';
 
 class ScheduleAppointment extends StatefulWidget {
   const ScheduleAppointment({super.key});
@@ -24,6 +25,8 @@ class _ScheduleAppointmentState extends State<ScheduleAppointment> {
 
   Specialty? _selectedSpecialty;
   DateTime? _selectedDate;
+  String? _selectedHour;
+
 
   @override
   Widget build(BuildContext context) {
@@ -62,38 +65,70 @@ class _ScheduleAppointmentState extends State<ScheduleAppointment> {
                 borderRadius: BorderRadius.circular(15),
               ),
               alignment: Alignment.center,
-              child: _selectedSpecialty != null
-                  ? CustomCalendar(
-                      initialDate: DateTime.now(),
-                      userPickedDate: (fecha) {
-                        setState(() {
-                          _selectedDate = fecha;
-                        });
-                      },
-                    )
-                  : const SizedBox.shrink(),
+              child: Builder(
+                builder: (context){
+                  return _selectedSpecialty != null
+                      ? CustomCalendar(
+                        key: const Key('custom_calendar'),
+                        initialDate: DateTime.now(),
+                        userPickedDate: (fecha) {
+                          setState(() {
+                            _selectedDate = fecha;
+                          });
+                        },
+                      ) : const SizedBox.shrink();
+                },
+              ),
+
             ),
 
             const SizedBox(height: 20),
             Container(
               child: _selectedDate != null
                   ? DoctorInfoCard(
-                      doctorName: 'Dr. Nicolas Sierra',
-                      clinicLocation: 'Sucursal centro',
-                      doctorImagePath: 'assets/images/doctor.jpeg',
-                      availableTimeSlots: getAvailableSlotsFor(_selectedDate),
-                    )
+                    doctorName: 'Dr. Nicolas Sierra',
+                    clinicLocation: 'Sucursal centro',
+                    doctorImagePath: 'assets/images/doctor.jpeg',
+                    availableTimeSlots: getAvailableSlotsFor(_selectedDate),
+                    onTimeSelected: (time) {
+                      setState(() {
+                        _selectedHour = time;
+                      });
+                    },
+                  )
                   : const SizedBox.shrink(),
             ),
 
             const SizedBox(height: 30),
             //_ScheduleButton(),
             Center(
-                child: CustomButton(
-                    description: 'Agendar cita',
-                    onPressed: () {},
-                    primaryColor: AppColors.primaryGreen,
-                    width: 150))
+                child: _selectedDate != null && _selectedHour != null
+                    ? CustomButton(
+                      description: 'Reservar cita',
+                      onPressed: () {
+                        showAppointmentDialog(
+                          context: context,
+                          date: _selectedDate!,
+                          time: _selectedHour!,
+                          type: _selectedSpecialty?.name ?? '',
+                          doctor: 'Dr. Nicolas Sierra',
+                          location: 'Sucursal centro',
+                          isConfirmation: true,
+                          onConfirm: () {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text('Cita confirmada.'),
+                                backgroundColor: AppColors.primaryGreen,
+                              ),
+                            );
+                          },
+                        );
+                      },
+                      primaryColor: AppColors.primaryGreen,
+                      width: 150
+                    )
+                    : const SizedBox.shrink(),
+            )
           ],
         ),
       ),
