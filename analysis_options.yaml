@@ -1,1 +1,38 @@
+# analysis_options.yaml
+# Basic static-analysis configuration for a Flutter project.
+# Place this file beside pubspec.yaml.
+
+# 1) Base rule set -----------------------------------------------------------
 include: package:flutter_lints/flutter.yaml
+# (The flutter_lints package is maintained by the Flutter team and
+#  mirrors their own internal coding standards.)
+
+# 2) Analyzer settings -------------------------------------------------------
+analyzer:
+  # Exclude generated or third-party files so they don’t trigger warnings.
+  exclude:
+    - "**/*.g.dart" # code-generation (json_serializable, built_value, etc.)
+    - "**/*.freezed.dart" # freezed code-generation
+    - "**/generated/**" # protobuf, graphql, intl, etc.
+    - "build/**"
+    - ".dart_tool/**"
+
+# 3) Extra linter rules ------------------------------------------------------
+linter:
+  rules:
+    # --- Style & readability ---
+    always_use_package_imports: true # prefer 'package:foo/bar.dart'
+    prefer_const_constructors: true # smaller rebuilds, lower memory
+    prefer_const_literals_to_create_immutables: true
+    avoid_print: true # surface logs via logger packages instead
+    prefer_single_quotes: true
+    unnecessary_const: true
+
+    # --- Safety ---
+    prefer_final_locals: true # prevents accidental mutation
+    unnecessary_null_checks: true
+    prefer_if_elements_to_conditional_expressions: true
+
+    # --- Pedantry you can comment out if noisy ---
+    sort_pub_dependencies: false # turn on when the team agrees
+    public_member_api_docs: false # add docs later if desired
