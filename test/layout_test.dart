@@ -1,6 +1,6 @@
 import 'package:arvivet_app/pages/about/about.dart';
 import 'package:arvivet_app/pages/home.dart';
-import 'package:arvivet_app/pages/medical_history.dart';
+import 'package:arvivet_app/pages/appointments.dart';
 import 'package:arvivet_app/pages/schedule_appointment.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +33,7 @@ void main(){
     testWidgets('Navigate to the Medical History section', (WidgetTester tester) async {
       await loadPage(tester, const MainLayout());
       await tapBottomNavIcon(tester, Icons.folder_open_rounded);
-      expect(find.byType(VetHistorialPage), findsOneWidget);
+      expect(find.byType(AppointmentsPage), findsOneWidget);
     });
 
     testWidgets('Navigate to the About me section', (WidgetTester tester) async {

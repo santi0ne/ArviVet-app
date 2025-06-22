@@ -21,14 +21,14 @@ class Appointment {
   });
 }
 
-class VetHistorialPage extends StatefulWidget {
-  const VetHistorialPage({super.key});
+class AppointmentsPage extends StatefulWidget {
+  const AppointmentsPage({super.key});
 
   @override
-  State<VetHistorialPage> createState() => _VetHistorialPageState();
+  State<AppointmentsPage> createState() => _AppointmentsPageState();
 }
 
-class _VetHistorialPageState extends State<VetHistorialPage> {
+class _AppointmentsPageState extends State<AppointmentsPage> {
   int _segment = 0;
   DateTime? _fechaSeleccionada;
 

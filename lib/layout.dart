@@ -1,6 +1,6 @@
 import 'package:arvivet_app/pages/about/about.dart';
 import 'package:arvivet_app/pages/home.dart';
-import 'package:arvivet_app/pages/medical_history.dart';
+import 'package:arvivet_app/pages/appointments.dart';
 import 'package:arvivet_app/pages/schedule_appointment.dart';
 import 'package:arvivet_app/utils/app_colors.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
@@ -65,9 +65,9 @@ class _MainLayoutState extends State<MainLayout> {
       case 0:
         return const HomePage();
       case 1:
-        return const ScheduleAppointment();
+        return const AppointmentsPage();
       case 2:
-        return const VetHistorialPage();
+        return const AppointmentsPage();
       case 3:
         return const AboutPage();
       default:
