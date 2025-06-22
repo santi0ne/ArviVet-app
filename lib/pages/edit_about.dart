@@ -39,18 +39,23 @@ class EditAboutPage extends StatelessWidget {
                         final datos = personalInfoKey.currentState?.getDatos();
 
                         if (datos != null) {
-                          // Mostrar el pop-up
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text('Datos actualizados correctamente.'),
-                              duration: Duration(seconds: 2),
+                          showDialog(
+                            context: context,
+                            builder: (context) => AlertDialog(
+                              title: const Text('Información Actualizada'),
+                              content: const Text(
+                                  'Los datos se han actualizado correctamente.'),
+                              actions: [
+                                TextButton(
+                                  child: const Text('Aceptar'),
+                                  onPressed: () => {
+                                    Navigator.pop(context),
+                                    Navigator.pop(context, datos)
+                                  },
+                                ),
+                              ],
                             ),
                           );
-
-                          // Esperar 2 segundos y volver a AboutPage con datos
-                          Future.delayed(const Duration(seconds: 2), () {
-                            Navigator.pop(context, datos);
-                          });
                         }
                       },
                       width: 120,
@@ -75,4 +80,3 @@ class EditAboutPage extends StatelessWidget {
     );
   }
 }
-
