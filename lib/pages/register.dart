@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import '../utils/app_colors.dart';
-import '../utils/app_sizes.dart';
-import '../utils/app_text_styles.dart';
-import '../widgets/ui/custom_button.dart';
-import '../widgets/ui/custom_underline_input.dart';
+import 'package:arvivet_app/utils/app_colors.dart';
+import 'package:arvivet_app/utils/app_sizes.dart';
+import 'package:arvivet_app/utils/app_text_styles.dart';
+import 'package:arvivet_app/widgets/ui/custom_button.dart';
+import 'package:arvivet_app/widgets/ui/custom_underline_input.dart';
 
 class RegisterView extends StatefulWidget {
   const RegisterView({super.key});
@@ -46,9 +46,9 @@ class _RegisterViewState extends State<RegisterView> {
                 const SizedBox(height: 16),
 
                 // Título
-                Text('Registro', style: AppTextStyles.title),
+                const Text('Registro', style: AppTextStyles.title),
                 const SizedBox(height: 8),
-                Text(
+                const Text(
                   'Llena los siguientes campos para crear tu cuenta',
                   style: AppTextStyles.subtitle,
                 ),

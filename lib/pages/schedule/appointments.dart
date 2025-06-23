@@ -4,8 +4,8 @@ import 'package:arvivet_app/widgets/ui/custom_appbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import '../../utils/app_colors.dart';
-import '../../widgets/ui/custom_button.dart';
+import 'package:arvivet_app/utils/app_colors.dart';
+import 'package:arvivet_app/widgets/ui/custom_button.dart';
 
 class Appointment {
   final DateTime dateTime;
@@ -137,8 +137,8 @@ class _AppointmentsPageState extends State<AppointmentsPage> {
                   children: [
                     TextButton.icon(
                       onPressed: () async {
-                        DateTime now = DateTime.now();
-                        DateTime? picked = await showDatePicker(
+                        final DateTime now = DateTime.now();
+                        final DateTime? picked = await showDatePicker(
                           context: context,
                           initialDate: _fechaSeleccionada ?? now,
                           firstDate: DateTime(2020),
@@ -173,7 +173,7 @@ class _AppointmentsPageState extends State<AppointmentsPage> {
           Expanded(
             child: appointments.isEmpty
                 ? const Center(
-                    child: Text("No hay citas para la fecha seleccionada"),
+                    child: Text('No hay citas para la fecha seleccionada'),
                   )
                 : ListView.separated(
                     padding: const EdgeInsets.fromLTRB(24, 0, 24, 20),

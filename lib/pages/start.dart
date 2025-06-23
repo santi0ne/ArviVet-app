@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import '../utils/app_colors.dart';
-import '../utils/app_text_styles.dart';
-import '../widgets/ui/custom_button.dart';
-import 'register.dart';
-import 'log_in.dart';
+import 'package:arvivet_app/utils/app_colors.dart';
+import 'package:arvivet_app/utils/app_text_styles.dart';
+import 'package:arvivet_app/widgets/ui/custom_button.dart';
+import 'package:arvivet_app/pages/register.dart';
+import 'package:arvivet_app/pages/log_in.dart';
 
 class StartView extends StatelessWidget {
   const StartView({super.key});
@@ -30,7 +30,7 @@ class StartView extends StatelessWidget {
               // ✅ centra el botón sin obligar a ocupar todo el ancho
               child: CustomButton(
                 width: 200, // o el tamaño que quieras
-                description: "Ingresar",
+                description: 'Ingresar',
                 onPressed: () {
                   Navigator.push(
                     context,
@@ -49,7 +49,7 @@ class StartView extends StatelessWidget {
             Column(
               children: [
                 const Text(
-                  "¿No tiene una cuenta?",
+                  '¿No tiene una cuenta?',
                   style: AppTextStyles.muted,
                 ),
                 const SizedBox(height: 4),
@@ -61,7 +61,7 @@ class StartView extends StatelessWidget {
                     );
                   },
                   child: const Text(
-                    "Regístrese aquí",
+                    'Regístrese aquí',
                     style: AppTextStyles.link,
                   ),
                 ),

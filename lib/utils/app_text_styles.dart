@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'app_colors.dart';
+import 'package:arvivet_app/utils/app_colors.dart';
 
 class AppTextStyles {
   static const TextStyle title = TextStyle(

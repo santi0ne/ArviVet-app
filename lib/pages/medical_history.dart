@@ -14,20 +14,20 @@ class MedicalHistoryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      appBar: const CustomAppBar(label: 'Historial Médico'),
+      appBar: CustomAppBar(label: 'Historial Médico'),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.all(16),
+            padding: EdgeInsets.all(16),
             child: Column(
               children: [
-                const MedicalHistoryPetInfo(),
-                const MedicalHistoryPetVaccines(),
-                const MedicalHistoryRecentVisits(),
-                const MedicalHistoryPetMedicines(),
-                const MedicalHistoryPetWeight(),
-                const MedicalHistoryPetAllergies(),
-                const MedicalHistoryPetVets(),
+                MedicalHistoryPetInfo(),
+                MedicalHistoryPetVaccines(),
+                MedicalHistoryRecentVisits(),
+                MedicalHistoryPetMedicines(),
+                MedicalHistoryPetWeight(),
+                MedicalHistoryPetAllergies(),
+                MedicalHistoryPetVets(),
               ],
             ),
           ),

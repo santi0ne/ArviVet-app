@@ -1,6 +1,5 @@
 import 'package:arvivet_app/utils/app_colors.dart';
 import 'package:arvivet_app/utils/app_sizes.dart';
-import 'package:arvivet_app/widgets/ui/custom_button.dart';
 import 'package:flutter/material.dart';
 
 class HomePromotions extends StatelessWidget {

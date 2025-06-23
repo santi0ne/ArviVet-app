@@ -1,10 +1,10 @@
 import 'package:arvivet_app/pages/home.dart';
+import 'package:arvivet_app/utils/app_colors.dart';
+import 'package:arvivet_app/utils/app_sizes.dart';
+import 'package:arvivet_app/utils/app_text_styles.dart';
+import 'package:arvivet_app/widgets/ui/custom_button.dart';
+import 'package:arvivet_app/widgets/ui/custom_input.dart';
 import 'package:flutter/material.dart';
-import '../utils/app_colors.dart';
-import '../utils/app_sizes.dart';
-import '../utils/app_text_styles.dart';
-import '../widgets/ui/custom_button.dart';
-import '../widgets/ui/custom_input.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -53,7 +53,7 @@ class _LoginViewState extends State<LoginView> {
 
                   // Título
                   const Text(
-                    "Inicio de Sesión",
+                    'Inicio de Sesión',
                     style: AppTextStyles.title,
                   ),
 
@@ -61,8 +61,8 @@ class _LoginViewState extends State<LoginView> {
 
                   // Input correo
                   CustomInput(
-                    label: "Correo",
-                    hintText: "usuario@ejemplo.com",
+                    label: 'Correo',
+                    hintText: 'usuario@ejemplo.com',
                     controller: _emailController,
                     keyboardType: TextInputType.emailAddress,
                   ),
@@ -71,8 +71,8 @@ class _LoginViewState extends State<LoginView> {
 
                   // Input contraseña con ícono
                   CustomInput(
-                    label: "Contraseña",
-                    hintText: "Introduce tu contraseña",
+                    label: 'Contraseña',
+                    hintText: 'Introduce tu contraseña',
                     controller: _passwordController,
                     obscureText: _obscureText,
                     suffixIcon: IconButton(
@@ -95,9 +95,8 @@ class _LoginViewState extends State<LoginView> {
                     child: SizedBox(
                       width: 240,
                       child: CustomButton(
-                        description: "Inicia Sesión",
+                        description: 'Inicia Sesión',
                         onPressed: () {
-                          print("boton");
                           Navigator.push(
                             context,
                             MaterialPageRoute(

@@ -2,7 +2,7 @@ import 'package:arvivet_app/widgets/schedule_appointment/specialty.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../utils/app_colors.dart';
+import 'package:arvivet_app/utils/app_colors.dart';
 
 class CustomSpecialtyDropdown extends StatelessWidget {
   final List<Specialty> specialties;

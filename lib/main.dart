@@ -1,9 +1,5 @@
-import 'package:arvivet_app/pages/home.dart';
 import 'package:arvivet_app/layout.dart';
 import 'package:flutter/material.dart';
-import 'package:arvivet_app/pages/log_in.dart';
-import 'package:arvivet_app/pages/start.dart';
-import 'package:arvivet_app/pages/register.dart';
 import 'package:intl/date_symbol_data_local.dart'; //
 import 'package:intl/intl.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -24,7 +20,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "ArviVet App",
+      title: 'ArviVet App',
       theme: ThemeData(
         fontFamily: 'RobotoFlex',
       ),
