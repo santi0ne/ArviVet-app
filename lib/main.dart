@@ -1,19 +1,23 @@
 import 'package:arvivet_app/layout.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:intl/date_symbol_data_local.dart'; //
 import 'package:intl/intl.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 Future<void> main() async {
+  await dotenv.load();
+  final apiUrl = dotenv.env['SUPABASE_URL'];
+  final apiKey = dotenv.env['SUPABASE_KEY'];
   WidgetsFlutterBinding.ensureInitialized();
 
   await initializeDateFormatting('es_ES', null); // carga símbolos
   Intl.defaultLocale = 'es_ES'; // fija locale global
 
   await Supabase.initialize(
-    url: 'https://earsfeijkxfxdyblnmtx.supabase.co',
-    anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVhcnNmZWlqa3hmeGR5YmxubXR4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDMwOTAzODUsImV4cCI6MjA1ODY2NjM4NX0.35WzeIEEBSqNWPPi4t3z0Q8kGA3hi7bJwqTPQvXrpXU',
+    url: apiUrl ?? '',
+    anonKey: apiKey ?? '',
     debug: true,
   );
 
