@@ -1,4 +1,5 @@
 import 'package:arvivet_app/Services/auth_service.dart';
+import 'package:arvivet_app/layout.dart';
 import 'package:arvivet_app/pages/home.dart';
 import 'package:arvivet_app/utils/app_colors.dart';
 import 'package:arvivet_app/utils/app_sizes.dart';
@@ -106,7 +107,7 @@ class _LoginViewState extends State<LoginView> {
                               // ignore: use_build_context_synchronously
                               context,
                               MaterialPageRoute(
-                                  builder: (_) => const HomePage()),
+                                  builder: (_) => const MainLayout()),
                             );
                           } catch (e) {
                             // ignore: use_build_context_synchronously
