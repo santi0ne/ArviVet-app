@@ -1,7 +1,9 @@
+import 'package:arvivet_app/Services/auth_service.dart';
 import 'package:arvivet_app/pages/home.dart';
 import 'package:arvivet_app/utils/app_colors.dart';
 import 'package:arvivet_app/utils/app_sizes.dart';
 import 'package:arvivet_app/utils/app_text_styles.dart';
+import 'package:arvivet_app/widgets/ui/custom_appbar.dart';
 import 'package:arvivet_app/widgets/ui/custom_button.dart';
 import 'package:arvivet_app/widgets/ui/custom_input.dart';
 import 'package:flutter/material.dart';
@@ -18,10 +20,13 @@ class _LoginViewState extends State<LoginView> {
   final _passwordController = TextEditingController();
   bool _obscureText = true;
 
+  final authService = AuthService();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.whiteColor,
+      appBar: const CustomAppBar(label: 'Inicio de Sesión'),
       body: SafeArea(
         child: SingleChildScrollView(
             child: ConstrainedBox(
@@ -34,15 +39,6 @@ class _LoginViewState extends State<LoginView> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  // ← Botón atrás (opcional)
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: IconButton(
-                      icon: const Icon(Icons.arrow_back_ios),
-                      onPressed: () => Navigator.pop(context),
-                    ),
-                  ),
-
                   // Imagen del perrito
                   Image.asset(
                     'assets/images/dog_login.png',
@@ -96,14 +92,28 @@ class _LoginViewState extends State<LoginView> {
                       width: 240,
                       child: CustomButton(
                         description: 'Inicia Sesión',
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const HomePage(),
-                            ),
-                          );
-                          // Acción al iniciar sesión
+                        onPressed: () async {
+                          try {
+                            final usuario = await authService.loginUsuario(
+                              correo: _emailController.text.trim(),
+                              contrasena: _passwordController.text,
+                            );
+
+                            print(
+                                'Usuario logueado: ${usuario['nombre']}, rol: ${usuario['rol']}');
+
+                            Navigator.pushReplacement(
+                              // ignore: use_build_context_synchronously
+                              context,
+                              MaterialPageRoute(
+                                  builder: (_) => const HomePage()),
+                            );
+                          } catch (e) {
+                            // ignore: use_build_context_synchronously
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text(e.toString())),
+                            );
+                          }
                         },
                         primaryColor: AppColors.primaryGreen,
                       ),

@@ -1,9 +1,8 @@
+import 'package:arvivet_app/widgets/authentication/register_form.dart';
+import 'package:arvivet_app/widgets/ui/custom_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:arvivet_app/utils/app_colors.dart';
 import 'package:arvivet_app/utils/app_sizes.dart';
-import 'package:arvivet_app/utils/app_text_styles.dart';
-import 'package:arvivet_app/widgets/ui/custom_button.dart';
-import 'package:arvivet_app/widgets/ui/custom_underline_input.dart';
 
 class RegisterView extends StatefulWidget {
   const RegisterView({super.key});
@@ -14,14 +13,20 @@ class RegisterView extends StatefulWidget {
 
 class _RegisterViewState extends State<RegisterView> {
   final _nameController = TextEditingController();
+  final _phoneController = TextEditingController();
+  final _addressController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  final _confirmPasswordController = TextEditingController();
 
   @override
   void dispose() {
     _nameController.dispose();
+    _phoneController.dispose();
+    _addressController.dispose();
     _emailController.dispose();
     _passwordController.dispose();
+    _confirmPasswordController.dispose();
     super.dispose();
   }
 
@@ -29,67 +34,18 @@ class _RegisterViewState extends State<RegisterView> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.whiteColor,
+      appBar: const CustomAppBar(label: 'Registro'),
       body: SafeArea(
         child: SingleChildScrollView(
-          // 🔁 Agrega scroll por si el teclado cubre algo
           child: Padding(
             padding: const EdgeInsets.all(AppSizes.padding),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // Botón volver
-                IconButton(
-                  icon: const Icon(Icons.arrow_back_ios, size: 20),
-                  onPressed: () => Navigator.pop(context),
-                ),
-
-                const SizedBox(height: 16),
-
-                // Título
-                const Text('Registro', style: AppTextStyles.title),
-                const SizedBox(height: 8),
-                const Text(
-                  'Llena los siguientes campos para crear tu cuenta',
-                  style: AppTextStyles.subtitle,
-                ),
-                const SizedBox(height: 32),
-
-                // Campos de entrada
-                CustomUnderlineInput(
-                  label: 'Nombre',
-                  hintText: 'Ingresa tu nombre',
-                  controller: _nameController,
-                ),
-                const SizedBox(height: 16),
-                CustomUnderlineInput(
-                  label: 'Correo',
-                  hintText: 'Ingresa tu correo',
-                  controller: _emailController,
-                  keyboardType: TextInputType.emailAddress,
-                ),
-                const SizedBox(height: 16),
-                CustomUnderlineInput(
-                  label: 'Contraseña',
-                  hintText: 'Introduce tu contraseña',
-                  controller: _passwordController,
-                  obscureText: true,
-                ),
-                const SizedBox(height: 40),
-
-                // Botón Crear Cuenta
-                Center(
-                  child: CustomButton(
-                    width: 200, // o el tamaño que desees
-                    description: 'Crear Cuenta',
-                    onPressed: () {
-                      // Acción de registro
-                    },
-                    primaryColor: AppColors.primaryGreen,
-                  ),
-                ),
-
-                const SizedBox(height: 40),
-              ],
+            child: RegisterForm(
+              nameController: _nameController,
+              phoneController: _phoneController,
+              addressController: _addressController,
+              emailController: _emailController,
+              passwordController: _passwordController,
+              confirmPasswordController: _confirmPasswordController,
             ),
           ),
         ),

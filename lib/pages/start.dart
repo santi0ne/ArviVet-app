@@ -25,11 +25,9 @@ class StartView extends StatelessWidget {
 
             const SizedBox(height: 34),
 
-            // Botón "Ingresar"
             Center(
-              // ✅ centra el botón sin obligar a ocupar todo el ancho
               child: CustomButton(
-                width: 200, // o el tamaño que quieras
+                width: 200,
                 description: 'Ingresar',
                 onPressed: () {
                   Navigator.push(

@@ -1,4 +1,5 @@
 import 'package:arvivet_app/layout.dart';
+import 'package:arvivet_app/pages/start.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:intl/date_symbol_data_local.dart'; //
@@ -35,14 +36,14 @@ class MainApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: 'RobotoFlex',
       ),
-      //home: const StartView(),
       supportedLocales: const [Locale('es', 'ES')],
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      home: const MainLayout(),
+      //home: const MainLayout(),
+      home: const StartView(),
       debugShowCheckedModeBanner: false,
     ); // ← close MaterialApp
   } // ← close build()

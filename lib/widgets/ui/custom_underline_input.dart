@@ -37,7 +37,7 @@ class CustomUnderlineInput extends StatelessWidget {
             suffixIcon: suffixIcon,
             filled: true,
             fillColor: AppColors.whiteColor,
-            contentPadding: const EdgeInsets.symmetric(vertical: 12),
+            contentPadding: const EdgeInsets.symmetric(vertical: 9),
             border: UnderlineInputBorder(
               borderSide: BorderSide(color: AppColors.borderColor),
             ),
