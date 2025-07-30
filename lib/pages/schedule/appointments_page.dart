@@ -1,8 +1,9 @@
-import 'package:arvivet_app/Services/appointments_services.dart';
+import 'package:arvivet_app/services/appointments_services.dart';
 import 'package:arvivet_app/pages/schedule/schedule_appointment.dart';
 import 'package:arvivet_app/utils/app_colors.dart';
+import 'package:arvivet_app/utils/session_manager.dart';
 import 'package:arvivet_app/widgets/schedule_appointment/appointments_card.dart';
-import 'package:arvivet_app/widgets/schedule_appointment/appointments.dart';
+import 'package:arvivet_app/models/appointments.dart';
 import 'package:arvivet_app/widgets/ui/custom_appbar.dart';
 import 'package:arvivet_app/widgets/ui/custom_button.dart';
 import 'package:flutter/cupertino.dart';
@@ -32,12 +33,9 @@ class AppointmentsPageState extends State<AppointmentsPage> {
 
   Future<void> _loadAppointments() async {
     try {
-      //final userId = Supabase.instance.client.auth.currentUser?.id;
-      //if (userId == null) throw Exception('No hay usuario autenticado');
-      //final data = await AppointmentServices.fetchAppointments(userId);
-      //Esto es  para cuando ya tengamos login usandose
-
-      final data = await AppointmentServices.fetchAppointments();
+      final userId = SessionManager().userId;
+      if (userId == null) throw Exception('No hay usuario autenticado');
+      final data = await AppointmentServices.fetchAppointments(userId);
 
       setState(() {
         _appointments = data;
@@ -54,7 +52,6 @@ class AppointmentsPageState extends State<AppointmentsPage> {
   Widget build(BuildContext context) {
     final isUpcoming = _segment == 0;
 
-
     final rawAppointments = _appointments.where(
           (a) => isUpcoming
           ? a.status.toLowerCase() == 'pendiente'
@@ -66,8 +63,6 @@ class AppointmentsPageState extends State<AppointmentsPage> {
         : rawAppointments
             .where((a) => a.date.compareTo(_fechaSeleccionada!) >= 0)
             .toList();
-
-
 
     return Scaffold(
       appBar: const CustomAppBar(label: 'Historial de Citas'),

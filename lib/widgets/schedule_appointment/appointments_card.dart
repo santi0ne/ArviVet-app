@@ -17,7 +17,6 @@ class AppointmentCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dateFmt = DateFormat('dd MMMM yyyy', 'es_ES');
-    final timeFmt = DateFormat('HH:mm a', 'es_ES');
 
     return Card(
       elevation: 3,
@@ -64,9 +63,9 @@ class AppointmentCard extends StatelessWidget {
                               context: context,
                               date: appointment.date,
                               time: appointment.hour,
-                              type: appointment.specialityName,
-                              doctor: appointment.vetName,
-                              location: appointment.location,
+                              speciality: appointment.specialityName ?? '',
+                              vet: appointment.vetName ?? '',
+                              direction: appointment.branchDirection ?? '',
                             );
                           },
                         ),
@@ -117,7 +116,7 @@ class AppointmentCard extends StatelessWidget {
                   ),
                   const SizedBox(height: 6),
                   Text(
-                    appointment.specialityName,
+                    appointment.specialityName ?? '',
                     style: const TextStyle(
                         fontSize: 15, fontWeight: FontWeight.bold),
                   ),
@@ -129,7 +128,7 @@ class AppointmentCard extends StatelessWidget {
                       const SizedBox(width: 4),
                       Expanded(
                         child: Text(
-                          appointment.vetName,
+                          appointment.vetName ?? '',
                           style: const TextStyle(fontSize: 12),
                           overflow: TextOverflow.ellipsis,
                         ),
@@ -144,7 +143,7 @@ class AppointmentCard extends StatelessWidget {
                       const SizedBox(width: 4),
                       Expanded(
                         child: Text(
-                          appointment.location,
+                          appointment.branchDirection ?? '',
                           style: const TextStyle(fontSize: 12),
                           overflow: TextOverflow.ellipsis,
                         ),

@@ -1,9 +1,9 @@
-import 'package:arvivet_app/Services/auth_service.dart';
+import 'package:arvivet_app/services/auth_service.dart';
 import 'package:arvivet_app/layout.dart';
-import 'package:arvivet_app/pages/home.dart';
 import 'package:arvivet_app/utils/app_colors.dart';
 import 'package:arvivet_app/utils/app_sizes.dart';
 import 'package:arvivet_app/utils/app_text_styles.dart';
+import 'package:arvivet_app/utils/session_manager.dart';
 import 'package:arvivet_app/widgets/ui/custom_appbar.dart';
 import 'package:arvivet_app/widgets/ui/custom_button.dart';
 import 'package:arvivet_app/widgets/ui/custom_input.dart';
@@ -100,8 +100,8 @@ class _LoginViewState extends State<LoginView> {
                               contrasena: _passwordController.text,
                             );
 
-                            print(
-                                'Usuario logueado: ${usuario['nombre']}, rol: ${usuario['rol']}');
+                            // Guardar usuario en sesion
+                            SessionManager().setUser(usuario);
 
                             Navigator.pushReplacement(
                               // ignore: use_build_context_synchronously

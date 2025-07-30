@@ -33,12 +33,10 @@ class AuthService {
         'p_contrasena': contrasena,
       });
 
-      // Si el resultado es una lista vacía => login fallido
       if (result == null || (result is List && result.isEmpty)) {
         throw Exception('Credenciales inválidas');
       }
 
-      // Si el procedimiento devuelve un usuario como lista de un solo objeto:
       final user = (result as List).first as Map<String, dynamic>;
       return user;
     } catch (e) {
