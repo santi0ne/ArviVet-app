@@ -1,4 +1,5 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:arvivet_app/utils/session_manager.dart';
 
 class AuthService {
   final SupabaseClient _client = Supabase.instance.client;
@@ -41,6 +42,21 @@ class AuthService {
       return user;
     } catch (e) {
       throw Exception('Error al iniciar sesión: $e');
+    }
+  }
+
+  Future<void> logoutUsuario() async {
+    try {
+      final sessionManager = SessionManager();
+      sessionManager.userId = null;
+      sessionManager.nombre = null;
+      sessionManager.rol = null;
+
+      if (_client.auth.currentSession != null) {
+        await _client.auth.signOut();
+      }
+    } catch (e) {
+      throw Exception('Error al cerrar sesión: $e');
     }
   }
 }
