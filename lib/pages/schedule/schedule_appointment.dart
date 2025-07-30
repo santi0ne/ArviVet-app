@@ -1,4 +1,6 @@
+import 'package:arvivet_app/Services/vet_schedule_service.dart';
 import 'package:arvivet_app/widgets/schedule_appointment//custom_calendar.dart';
+import 'package:arvivet_app/widgets/schedule_appointment/vet_schedule_list.dart';
 import 'package:arvivet_app/widgets/ui/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:arvivet_app/utils/app_colors.dart';
@@ -8,6 +10,7 @@ import 'package:arvivet_app/widgets/schedule_appointment/customSpecialtyDropdown
 import 'package:arvivet_app/widgets/ui/custom_appbar.dart';
 import 'package:arvivet_app/widgets/schedule_appointment/doctor_info_card.dart';
 import 'package:arvivet_app/widgets/schedule_appointment/show_appointment_dialog.dart';
+import 'package:arvivet_app/services/appointments_services.dart';
 
 class ScheduleAppointment extends StatefulWidget {
   const ScheduleAppointment({super.key});
@@ -17,15 +20,26 @@ class ScheduleAppointment extends StatefulWidget {
 }
 
 class _ScheduleAppointmentState extends State<ScheduleAppointment> {
-  static final List<Specialty> fixedSpecialties = [
-    Specialty(name: 'Laboratorio', iconPath: 'assets/images/microscopio.svg'),
-    Specialty(name: 'Vacunacion', iconPath: 'assets/images/vacuna.svg'),
-    Specialty(name: 'Veterinario', iconPath: 'assets/images/veterinario.svg'),
-  ];
-
+  List<Specialty> _specialties = [];
   Specialty? _selectedSpecialty;
   DateTime? _selectedDate;
+  int? _selectedVetId;
   String? _selectedHour;
+  bool _isLoading = false;
+  @override
+  void initState() {
+    super.initState();
+    AppointmentServices.fetchSpecialties().then((data) {
+      setState(() {
+        _specialties = data;
+        _selectedSpecialty = data.isNotEmpty ? data.first : null;
+        _isLoading = true;
+      });
+    });
+  }
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +47,8 @@ class _ScheduleAppointmentState extends State<ScheduleAppointment> {
       appBar: const CustomAppBar(
         label: 'Asignación de Citas',
       ),
-      body: SingleChildScrollView(
+      body: _isLoading == false ? const Center(child: CircularProgressIndicator()) :
+      SingleChildScrollView(
         padding: const EdgeInsets.all(20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -43,8 +58,8 @@ class _ScheduleAppointmentState extends State<ScheduleAppointment> {
             const SizedBox(height: 10),
 
             CustomSpecialtyDropdown(
-              specialties: fixedSpecialties,
-              selectedSpecialty: _selectedSpecialty ?? fixedSpecialties.first,
+              specialties: _specialties,
+              selectedSpecialty: _selectedSpecialty ?? _specialties.first,
               onChanged: (Specialty? newSpecialtySelected) {
                 if (newSpecialtySelected != null) {
                   setState(() {
@@ -82,21 +97,21 @@ class _ScheduleAppointmentState extends State<ScheduleAppointment> {
             ),
 
             const SizedBox(height: 20),
-            Container(
-              child: _selectedDate != null
-                  ? DoctorInfoCard(
-                      doctorName: 'Dr. Nicolas Sierra',
-                      clinicLocation: 'Sucursal centro',
-                      doctorImagePath: 'assets/images/doctor.jpeg',
-                      availableTimeSlots: getAvailableSlotsFor(_selectedDate),
-                      onTimeSelected: (time) {
-                        setState(() {
-                          _selectedHour = time;
-                        });
-                      },
-                    )
-                  : const SizedBox.shrink(),
-            ),
+
+            if (_selectedDate != null && _selectedSpecialty != null)
+              VetScheduleList(
+                specialityId: _selectedSpecialty!.id,
+                selectedDate: _selectedDate!,
+                selectedVetId: _selectedVetId,
+                selectedHour: _selectedHour,
+                onTimeSelected: (vetId, hour) {
+                  setState(() {
+                    _selectedVetId = vetId;
+                    _selectedHour = hour;
+                  });
+                },
+              ),
+
 
             const SizedBox(height: 30),
             //_ScheduleButton(),
@@ -132,10 +147,6 @@ class _ScheduleAppointmentState extends State<ScheduleAppointment> {
       ),
     );
   }
-}
 
-List<String> getAvailableSlotsFor(DateTime? date) {
-  if (date == null) return [];
-  // Ejemplo fijo para probar
-  return ['09:00 AM', '10:30 AM', '01:00 PM', '03:00 PM'];
+
 }

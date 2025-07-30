@@ -3,19 +3,25 @@ import 'package:arvivet_app/utils/app_colors.dart';
 import 'package:arvivet_app/utils/app_text_styles.dart';
 
 class DoctorInfoCard extends StatefulWidget {
+  final int vetId;
   final String doctorName;
   final String clinicLocation;
   final String doctorImagePath;
   final List<String> availableTimeSlots;
   final Function(String) onTimeSelected;
+  final int? globallySelectedVetId;
+  final String? globallySelectedHour;
 
   const DoctorInfoCard({
     super.key,
+    required this.vetId,
     required this.doctorName,
     required this.clinicLocation,
     required this.doctorImagePath,
     required this.availableTimeSlots,
     required this.onTimeSelected,
+    this.globallySelectedVetId,
+    this.globallySelectedHour,
   });
 
   @override
@@ -65,7 +71,10 @@ class _DoctorInfoCardState extends State<DoctorInfoCard> {
                   spacing: 10,
                   runSpacing: 8,
                   children: widget.availableTimeSlots.map((time) {
-                    final isSelected = selectedTime == time;
+                    final isSelected =
+                        widget.globallySelectedVetId == widget.vetId &&
+                            widget.globallySelectedHour == time;
+
                     return GestureDetector(
                       onTap: () {
                         setState(() {
