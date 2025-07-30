@@ -9,6 +9,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class AppointmentsPage extends StatefulWidget {
   const AppointmentsPage({super.key});
@@ -21,6 +22,7 @@ class AppointmentsPageState extends State<AppointmentsPage> {
   int _segment = 0;
   DateTime? _fechaSeleccionada;
 
+
   List<Appointment> _appointments = [];
   bool _isLoading = true;
 
@@ -32,12 +34,9 @@ class AppointmentsPageState extends State<AppointmentsPage> {
 
   Future<void> _loadAppointments() async {
     try {
-      //final userId = Supabase.instance.client.auth.currentUser?.id;
-      //if (userId == null) throw Exception('No hay usuario autenticado');
-      //final data = await AppointmentServices.fetchAppointments(userId);
-      //Esto es  para cuando ya tengamos login usandose
-
-      final data = await AppointmentServices.fetchAppointments();
+      final userId = Supabase.instance.client.auth.currentUser?.id; //Esto deberia cambiar por el servicio de obtener userid
+      if (userId == null) throw Exception('No hay usuario autenticado');
+      final data = await AppointmentServices.fetchAppointments(userId);
 
       setState(() {
         _appointments = data;
