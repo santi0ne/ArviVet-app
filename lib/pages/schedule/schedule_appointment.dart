@@ -109,9 +109,9 @@ class _ScheduleAppointmentState extends State<ScheduleAppointment> {
                           context: context,
                           date: _selectedDate!,
                           time: _selectedHour!,
-                          type: _selectedSpecialty?.name ?? '',
-                          doctor: 'Dr. Nicolas Sierra',
-                          location: 'Sucursal centro',
+                          speciality: _selectedSpecialty?.name ?? '',
+                          vet: 'Dr. Nicolas Sierra',
+                          direction: 'Sucursal centro',
                           isConfirmation: true,
                           onConfirm: () {
                             ScaffoldMessenger.of(context).showSnackBar(

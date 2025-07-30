@@ -1,4 +1,5 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:arvivet_app/utils/session_manager.dart';
 
 class AuthService {
   final SupabaseClient _client = Supabase.instance.client;
@@ -33,16 +34,29 @@ class AuthService {
         'p_contrasena': contrasena,
       });
 
-      // Si el resultado es una lista vacía => login fallido
       if (result == null || (result is List && result.isEmpty)) {
         throw Exception('Credenciales inválidas');
       }
 
-      // Si el procedimiento devuelve un usuario como lista de un solo objeto:
       final user = (result as List).first as Map<String, dynamic>;
       return user;
     } catch (e) {
       throw Exception('Error al iniciar sesión: $e');
+    }
+  }
+
+  Future<void> logoutUsuario() async {
+    try {
+      final sessionManager = SessionManager();
+      sessionManager.userId = null;
+      sessionManager.nombre = null;
+      sessionManager.rol = null;
+
+      if (_client.auth.currentSession != null) {
+        await _client.auth.signOut();
+      }
+    } catch (e) {
+      throw Exception('Error al cerrar sesión: $e');
     }
   }
 }

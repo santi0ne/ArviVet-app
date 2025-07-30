@@ -6,9 +6,9 @@ Future<void> showAppointmentDialog({
   required BuildContext context,
   required DateTime date,
   required String time,
-  required String type,
-  required String doctor,
-  required String location,
+  required String speciality,
+  required String vet,
+  required String direction,
   bool isConfirmation = false,
   VoidCallback? onConfirm,
 }) {
@@ -29,9 +29,9 @@ Future<void> showAppointmentDialog({
         children: [
           Text('📅 Fecha: ${date.day}/${date.month}/${date.year}'),
           Text('⏰ Hora: $time'),
-          Text('🩺 Tipo: $type'),
-          Text('👨‍⚕️ Doctor: $doctor'),
-          Text('📍 Lugar: $location'),
+          Text('🩺 Tipo: $speciality'),
+          Text('👨‍⚕️ Doctor: $vet'),
+          Text('📍 Lugar: $direction'),
         ],
       ),
       actions: [

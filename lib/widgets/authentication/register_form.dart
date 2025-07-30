@@ -1,4 +1,4 @@
-import 'package:arvivet_app/Services/auth_service.dart';
+import 'package:arvivet_app/services/auth_service.dart';
 import 'package:arvivet_app/utils/app_colors.dart';
 import 'package:arvivet_app/utils/app_text_styles.dart';
 import 'package:arvivet_app/widgets/ui/custom_button.dart';

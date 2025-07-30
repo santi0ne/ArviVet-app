@@ -1,3 +1,4 @@
+import 'package:arvivet_app/layout.dart';
 import 'package:arvivet_app/widgets/medical_history/pet_allergies.dart';
 import 'package:arvivet_app/widgets/medical_history/pet_info.dart';
 import 'package:arvivet_app/widgets/medical_history/pet_medicines.dart';
@@ -13,9 +14,12 @@ class MedicalHistoryPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      appBar: CustomAppBar(label: 'Historial Médico'),
-      body: SafeArea(
+    return Scaffold(
+      appBar: CustomAppBar(
+          label: 'Historial Médico',
+          onBack: () => Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const MainLayout()))),
+      body: const SafeArea(
         child: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.all(16),
