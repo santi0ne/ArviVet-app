@@ -1,3 +1,4 @@
+import 'package:arvivet_app/layout.dart';
 import 'package:arvivet_app/services/appointments_services.dart';
 import 'package:arvivet_app/pages/schedule/schedule_appointment.dart';
 import 'package:arvivet_app/utils/app_colors.dart';
@@ -52,11 +53,13 @@ class AppointmentsPageState extends State<AppointmentsPage> {
   Widget build(BuildContext context) {
     final isUpcoming = _segment == 0;
 
-    final rawAppointments = _appointments.where(
+    final rawAppointments = _appointments
+        .where(
           (a) => isUpcoming
-          ? a.status.toLowerCase() == 'pendiente'
-          : a.status.toLowerCase() == 'completada',
-    ).toList();
+              ? a.status.toLowerCase() == 'pendiente'
+              : a.status.toLowerCase() == 'completada',
+        )
+        .toList();
 
     final appointments = _fechaSeleccionada == null
         ? rawAppointments
@@ -65,7 +68,10 @@ class AppointmentsPageState extends State<AppointmentsPage> {
             .toList();
 
     return Scaffold(
-      appBar: const CustomAppBar(label: 'Historial de Citas'),
+      appBar: CustomAppBar(
+          label: 'Historial de Citas',
+          onBack: () => Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const MainLayout()))),
       body: Column(
         children: [
           Padding(
@@ -144,18 +150,18 @@ class AppointmentsPageState extends State<AppointmentsPage> {
             child: _isLoading
                 ? const Center(child: CircularProgressIndicator())
                 : appointments.isEmpty
-                  ? const Center(
-                      child: Text('No hay citas para la fecha seleccionada'),
-                    )
-                  : ListView.separated(
-                      padding: const EdgeInsets.fromLTRB(24, 0, 24, 20),
-                      itemCount: appointments.length,
-                      separatorBuilder: (_, __) => const SizedBox(height: 14),
-                      itemBuilder: (_, i) => AppointmentCard(
-                        appointment: appointments[i],
-                        upcoming: _segment == 0,
+                    ? const Center(
+                        child: Text('No hay citas para la fecha seleccionada'),
+                      )
+                    : ListView.separated(
+                        padding: const EdgeInsets.fromLTRB(24, 0, 24, 20),
+                        itemCount: appointments.length,
+                        separatorBuilder: (_, __) => const SizedBox(height: 14),
+                        itemBuilder: (_, i) => AppointmentCard(
+                          appointment: appointments[i],
+                          upcoming: _segment == 0,
+                        ),
                       ),
-                  ),
           ),
           Container(
             color: AppColors.whiteColor, // fondo blanco
@@ -186,6 +192,7 @@ class AppointmentsPageState extends State<AppointmentsPage> {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty<DateTime?>('_fechaSeleccionada', _fechaSeleccionada));
+    properties.add(DiagnosticsProperty<DateTime?>(
+        '_fechaSeleccionada', _fechaSeleccionada));
   }
 }

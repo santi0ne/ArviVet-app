@@ -1,3 +1,4 @@
+import 'package:arvivet_app/layout.dart';
 import 'package:arvivet_app/pages/about/edit_about.dart';
 import 'package:arvivet_app/utils/app_colors.dart';
 import 'package:arvivet_app/widgets/about/header.dart';
@@ -39,7 +40,10 @@ class _AboutPageState extends State<AboutPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(label: 'Acerca De'),
+      appBar: CustomAppBar(
+          label: 'Acerca De',
+          onBack: () => Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const MainLayout()))),
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(40),
