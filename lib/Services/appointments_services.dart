@@ -31,19 +31,15 @@ class AppointmentServices {
   }
 
   static Future<List<Specialty>> fetchSpecialties() async {
-    final response = await Supabase.instance.client
-        .from('speciality')
-        .select('id, name');
+    final response =
+        await Supabase.instance.client.from('speciality').select('id, name');
 
     return (response as List)
         .map((json) => Specialty(
-      id: json['id'],
-      name: json['name'],
-      iconPath: 'assets/images/${json['name'].toLowerCase()}.svg',
-    ))
+              id: json['id'],
+              name: json['name'],
+              iconPath: 'assets/images/${json['name'].toLowerCase()}.svg',
+            ))
         .toList();
-
-
   }
-
 }

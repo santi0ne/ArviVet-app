@@ -39,8 +39,6 @@ class _ScheduleAppointmentState extends State<ScheduleAppointment> {
   }
 
 
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -76,7 +74,7 @@ class _ScheduleAppointmentState extends State<ScheduleAppointment> {
               width: double.infinity,
               decoration: BoxDecoration(
                 color: Colors.grey[200],
-                borderRadius: BorderRadius.circular(15),
+                borderRadius: BorderRadius.circular(15)
               ),
               alignment: Alignment.center,
               child: Builder(

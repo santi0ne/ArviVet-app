@@ -1,3 +1,4 @@
+import 'package:arvivet_app/pages/schedule/appointments_page.dart';
 import 'package:arvivet_app/utils/app_colors.dart';
 import 'package:arvivet_app/utils/app_sizes.dart';
 import 'package:flutter/material.dart';
@@ -50,7 +51,13 @@ class HomePromotions extends StatelessWidget {
                     ),
                     const SizedBox(height: 4),
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => const AppointmentsPage(),
+                        ),
+                      );
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.whiteColor,
                         foregroundColor: const Color(0xFF4A90A4),
