@@ -1,4 +1,4 @@
-import 'package:arvivet_app/Services/vet_schedule_service.dart';
+import 'package:arvivet_app/services/vet_schedule_service.dart';
 import 'package:arvivet_app/widgets/schedule_appointment//custom_calendar.dart';
 import 'package:arvivet_app/widgets/schedule_appointment/vet_schedule_list.dart';
 import 'package:arvivet_app/widgets/ui/custom_button.dart';

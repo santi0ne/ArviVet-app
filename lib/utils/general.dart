@@ -1,3 +1,4 @@
+import 'package:arvivet_app/models/appointments.dart';
 import 'package:arvivet_app/utils/app_text_styles.dart';
 import 'package:flutter/material.dart';
 

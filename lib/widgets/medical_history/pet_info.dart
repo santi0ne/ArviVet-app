@@ -1,7 +1,10 @@
+import 'package:arvivet_app/models/pet.dart';
 import 'package:flutter/material.dart';
 
 class MedicalHistoryPetInfo extends StatelessWidget {
-  const MedicalHistoryPetInfo({super.key});
+  final Pet pet;
+
+  const MedicalHistoryPetInfo({super.key, required this.pet});
 
   @override
   Widget build(BuildContext context) {
@@ -10,8 +13,10 @@ class MedicalHistoryPetInfo extends StatelessWidget {
       padding: const EdgeInsets.all(20),
       margin: const EdgeInsets.only(bottom: 20),
       decoration: BoxDecoration(
-        gradient: const LinearGradient(
-          colors: [Color(0xFF87CEEB), Color(0xFF4FC3F7)],
+        gradient: LinearGradient(
+          colors: pet.sex.toLowerCase() == 'macho'
+              ? [const Color(0xFF87CEEB), const Color(0xFF4FC3F7)]
+              : [const Color(0xFFDA70D6), const Color(0xFFBA55D3)],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
@@ -38,7 +43,7 @@ class MedicalHistoryPetInfo extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Mika',
+                  pet.name,
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -53,7 +58,7 @@ class MedicalHistoryPetInfo extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  'Shih Tzu • 1 año • 5kg',
+                  '${pet.breed} • ${pet.sex} • ${pet.weigth}kg',
                   style: TextStyle(
                     fontSize: 14,
                     color: Colors.white.withOpacity(0.9),

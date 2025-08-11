@@ -1,9 +1,21 @@
+import 'package:arvivet_app/models/appointments.dart';
+import 'package:arvivet_app/models/history_pet.dart';
+import 'package:arvivet_app/services/appointments_services.dart';
 import 'package:arvivet_app/utils/general.dart';
 import 'package:flutter/material.dart';
 
-class MedicalHistoryRecentVisits extends StatelessWidget {
-  const MedicalHistoryRecentVisits({super.key});
+class MedicalHistoryRecentVisits extends StatefulWidget {
+  final List<HistoryPet> history;
 
+  const MedicalHistoryRecentVisits({super.key, required this.history});
+
+  @override
+  State<MedicalHistoryRecentVisits> createState() =>
+      _MedicalHistoryRecentVisitsState();
+}
+
+class _MedicalHistoryRecentVisitsState
+    extends State<MedicalHistoryRecentVisits> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -43,12 +55,37 @@ class MedicalHistoryRecentVisits extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 16),
-          buildVisitItem(
-              'Chequeo General', '10/03/2024', 'Dr. García', 'Todo normal'),
-          buildVisitItem(
-              'Vacunación', '15/02/2024', 'Dr. Martínez', 'Vacuna aplicada'),
-          buildVisitItem(
-              'Consulta', '05/01/2024', 'Dr. García', 'Revisión rutinaria'),
+          if (widget.history.isEmpty)
+            const Text(
+              'No hay visitas recientes.',
+              style: TextStyle(
+                fontSize: 14,
+                color: Colors.grey,
+              ),
+            )
+          else
+            ...widget.history.map((h) => FutureBuilder<Appointment?>(
+                  future:
+                      AppointmentServices.fetchAppointmentById(h.idAppointment),
+                  builder: (context, snapshot) {
+                    final speciality =
+                        snapshot.data?.specialityName ?? 'Especialidad';
+                    final date = h.record != null
+                        ? "${h.record!.day.toString().padLeft(2, '0')}/${h.record!.month.toString().padLeft(2, '0')}/${h.record!.year}"
+                        : '';
+                    final notes = h.treatmentDetal
+                        .split(';')
+                        .map((tit) => tit.split(':').first.trim())
+                        .join('\n');
+
+                    return buildVisitItem(
+                      speciality,
+                      date,
+                      snapshot.data?.vetName ?? '',
+                      notes,
+                    );
+                  },
+                )),
         ],
       ),
     );

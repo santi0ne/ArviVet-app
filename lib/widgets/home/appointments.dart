@@ -26,15 +26,11 @@ class HomeScheduledAppointments extends StatelessWidget {
         }
 
         final appointments = snapshot.data ?? [];
-        // Filtrar las que estén pendientes
         final pendingAppointments = appointments
             .where((a) => a.status.toLowerCase() == 'pendiente')
             .toList();
 
-        // Ordenar por fecha descendente
         pendingAppointments.sort((a, b) => b.date.compareTo(a.date));
-
-        // Obtener la cita más reciente pendiente
         final recent =
             pendingAppointments.isNotEmpty ? pendingAppointments.first : null;
 

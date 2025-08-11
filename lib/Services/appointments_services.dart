@@ -30,6 +30,35 @@ class AppointmentServices {
         .toList();
   }
 
+  static Future<Appointment?> fetchAppointmentById(int appointmentId) async {
+    final response = await Supabase.instance.client
+        .from('appointment')
+        .select('''
+          id,
+          date,
+          hour,
+          status,
+          duration_minutes,
+          vet (
+            name
+          ),
+          pet (
+            name
+          ),
+          speciality (
+            name
+          ),
+          branch (
+            direction
+          )
+        ''')
+        .eq('id', appointmentId)
+        .maybeSingle();
+
+    if (response == null) return null;
+    return Appointment.fromJson(response);
+  }
+
   static Future<List<Specialty>> fetchSpecialties() async {
     final response =
         await Supabase.instance.client.from('speciality').select('id, name');
