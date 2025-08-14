@@ -1,4 +1,3 @@
-import 'package:arvivet_app/models/appointments.dart';
 import 'package:arvivet_app/utils/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
@@ -87,54 +86,6 @@ Widget buildInput(String label, TextEditingController controller) {
   );
 }
 
-Widget buildVaccinationItem(
-    String vaccine, String date, String status, Color statusColor) {
-  return Padding(
-    padding: const EdgeInsets.only(bottom: 12),
-    child: Row(
-      children: [
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                vaccine,
-                style: const TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.black87,
-                ),
-              ),
-              Text(
-                date,
-                style: TextStyle(
-                  fontSize: 12,
-                  color: Colors.grey[600],
-                ),
-              ),
-            ],
-          ),
-        ),
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-          decoration: BoxDecoration(
-            color: statusColor.withOpacity(0.1),
-            borderRadius: BorderRadius.circular(12),
-          ),
-          child: Text(
-            status,
-            style: TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w500,
-              color: statusColor,
-            ),
-          ),
-        ),
-      ],
-    ),
-  );
-}
-
 Widget buildVisitItem(String type, String date, String doctor, String notes) {
   return Padding(
     padding: const EdgeInsets.only(bottom: 12),
@@ -192,151 +143,52 @@ Widget buildVisitItem(String type, String date, String doctor, String notes) {
   );
 }
 
-Widget buildMedicationItem(
-    String medication, String frequency, String nextDose) {
-  return Padding(
-    padding: const EdgeInsets.only(bottom: 12),
-    child: Row(
-      children: [
-        Container(
-          width: 8,
-          height: 8,
-          decoration: const BoxDecoration(
-            color: Colors.purple,
-            shape: BoxShape.circle,
-          ),
-        ),
-        const SizedBox(width: 12),
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                medication,
-                style: const TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.black87,
-                ),
-              ),
-              Text(
-                '$frequency • $nextDose',
-                style: TextStyle(
-                  fontSize: 12,
-                  color: Colors.grey[600],
-                ),
-              ),
-            ],
-          ),
-        ),
-      ],
-    ),
-  );
-}
+Widget buildTreatInfo(String treatment) {
+  final items = treatment.split(';').where((e) => e.trim().isNotEmpty).toList();
 
-Widget buildWeightPill(String weight, String date, Color backgroundColor) {
-  return Container(
-    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-    decoration: BoxDecoration(
-      color: backgroundColor,
-      borderRadius: BorderRadius.circular(16),
-    ),
-    child: Column(
-      children: [
-        Text(
-          weight,
-          style: const TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w600,
-            color: Colors.black87,
-          ),
-        ),
-        Text(
-          date,
-          style: TextStyle(
-            fontSize: 10,
-            color: Colors.grey[600],
-          ),
-        ),
-      ],
-    ),
-  );
-}
-
-Widget buildAllergyItem(String allergen, String type) {
-  return Padding(
-    padding: const EdgeInsets.only(bottom: 8),
-    child: Row(
-      children: [
-        Container(
-          width: 6,
-          height: 6,
-          decoration: const BoxDecoration(
-            color: Colors.red,
-            shape: BoxShape.circle,
-          ),
-        ),
-        const SizedBox(width: 12),
-        Expanded(
-          child: Text(
-            '$allergen ($type)',
-            style: const TextStyle(
-              fontSize: 14,
-              color: Colors.black87,
-            ),
-          ),
-        ),
-      ],
-    ),
-  );
-}
-
-Widget buildVetInfo(String name, String clinic, String phone) {
-  return Container(
-    padding: const EdgeInsets.all(12),
-    decoration: BoxDecoration(
-      color: Colors.white,
-      borderRadius: BorderRadius.circular(8),
-      border: Border.all(color: Colors.grey[200]!),
-    ),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          name,
-          style: const TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
-            color: Colors.black87,
-          ),
-        ),
-        const SizedBox(height: 4),
-        Text(
-          clinic,
-          style: TextStyle(
-            fontSize: 14,
-            color: Colors.grey[600],
-          ),
-        ),
-        const SizedBox(height: 4),
-        Row(
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: items.map((item) {
+      final parts = item.split(':');
+      final left = parts.isNotEmpty ? parts[0].trim() : '';
+      final right = parts.length > 1 ? parts.sublist(1).join(':').trim() : '';
+      return Padding(
+        padding: const EdgeInsets.only(bottom: 8),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Icon(
-              Icons.phone,
-              size: 16,
-              color: Colors.grey[600],
+            Container(
+              width: 6,
+              height: 6,
+              margin: const EdgeInsets.only(top: 6),
+              decoration: const BoxDecoration(
+                color: Colors.red,
+                shape: BoxShape.circle,
+              ),
             ),
-            const SizedBox(width: 4),
-            Text(
-              phone,
-              style: TextStyle(
-                fontSize: 14,
-                color: Colors.grey[600],
+            const SizedBox(width: 12),
+            Expanded(
+              child: RichText(
+                text: TextSpan(
+                  style: const TextStyle(
+                    fontSize: 14,
+                    color: Colors.black87,
+                  ),
+                  children: [
+                    TextSpan(
+                      text: left.isNotEmpty ? '$left: ' : '',
+                      style: const TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    TextSpan(
+                      text: right,
+                    ),
+                  ],
+                ),
               ),
             ),
           ],
         ),
-      ],
-    ),
+      );
+    }).toList(),
   );
 }

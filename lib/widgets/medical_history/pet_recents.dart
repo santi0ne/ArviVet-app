@@ -1,6 +1,7 @@
 import 'package:arvivet_app/models/appointments.dart';
 import 'package:arvivet_app/models/history_pet.dart';
 import 'package:arvivet_app/services/appointments_services.dart';
+import 'package:arvivet_app/utils/app_colors.dart';
 import 'package:arvivet_app/utils/general.dart';
 import 'package:flutter/material.dart';
 
@@ -60,11 +61,11 @@ class _MedicalHistoryRecentVisitsState
               'No hay visitas recientes.',
               style: TextStyle(
                 fontSize: 14,
-                color: Colors.grey,
+                color: AppColors.secBackgroundColor,
               ),
             )
           else
-            ...widget.history.map((h) => FutureBuilder<Appointment?>(
+            ...widget.history.take(3).map((h) => FutureBuilder<Appointment?>(
                   future:
                       AppointmentServices.fetchAppointmentById(h.idAppointment),
                   builder: (context, snapshot) {

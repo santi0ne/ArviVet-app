@@ -1,9 +1,20 @@
+import 'package:arvivet_app/models/history_pet.dart';
+import 'package:arvivet_app/utils/app_colors.dart';
 import 'package:arvivet_app/utils/general.dart';
 import 'package:flutter/material.dart';
 
-class MedicalHistoryPetMedicines extends StatelessWidget {
-  const MedicalHistoryPetMedicines({super.key});
+class MedicalHistoryPetTreatments extends StatefulWidget {
+  final List<HistoryPet> history;
 
+  const MedicalHistoryPetTreatments({super.key, required this.history});
+
+  @override
+  State<MedicalHistoryPetTreatments> createState() =>
+      MedicalHistoryPetTreatmentState();
+}
+
+class MedicalHistoryPetTreatmentState
+    extends State<MedicalHistoryPetTreatments> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -22,18 +33,18 @@ class MedicalHistoryPetMedicines extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  color: Colors.purple.withOpacity(0.1),
+                  color: Colors.red.withOpacity(0.1),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: const Icon(
                   Icons.medication,
                   size: 20,
-                  color: Colors.purple,
+                  color: Colors.red,
                 ),
               ),
               const SizedBox(width: 12),
               const Text(
-                'Medicamentos Actuales',
+                'Últimos tratamientos\nencontrados',
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w600,
@@ -43,9 +54,15 @@ class MedicalHistoryPetMedicines extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 16),
-          buildMedicationItem(
-              'Antiparasitario', 'Cada 3 meses', 'Próxima: 15/06/2024'),
-          buildMedicationItem('Vitaminas', 'Diario', 'En curso'),
+          if (widget.history.isEmpty)
+            const Text(
+              'No hay tratamientos recientes.',
+              style: TextStyle(fontSize: 14, color: AppColors.secBackgroundColor),
+            )
+          else
+            ...widget.history.take(3).map((h) {
+              return buildTreatInfo(h.treatmentDetal);
+            }),
         ],
       ),
     );

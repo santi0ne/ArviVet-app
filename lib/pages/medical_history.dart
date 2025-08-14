@@ -4,12 +4,10 @@ import 'package:arvivet_app/models/pet.dart';
 import 'package:arvivet_app/services/mhistory_service.dart';
 import 'package:arvivet_app/services/pet_service.dart';
 import 'package:arvivet_app/utils/session_manager.dart';
-import 'package:arvivet_app/widgets/medical_history/pet_allergies.dart';
+import 'package:arvivet_app/widgets/medical_history/pet_treatments.dart';
 import 'package:arvivet_app/widgets/medical_history/pet_info.dart';
-import 'package:arvivet_app/widgets/medical_history/pet_medicines.dart';
+import 'package:arvivet_app/widgets/medical_history/pet_observations.dart';
 import 'package:arvivet_app/widgets/medical_history/pet_recents.dart';
-import 'package:arvivet_app/widgets/medical_history/pet_vets.dart';
-import 'package:arvivet_app/widgets/medical_history/pet_weight.dart';
 import 'package:arvivet_app/widgets/ui/custom_appbar.dart';
 import 'package:flutter/material.dart';
 
@@ -79,9 +77,8 @@ class _MedicalHistoryPageState extends State<MedicalHistoryPage> {
                     children: [
                       MedicalHistoryPetInfo(pet: pet),
                       MedicalHistoryRecentVisits(history: _history),
-                      MedicalHistoryPetWeight(),
-                      MedicalHistoryPetAllergies(),
-                      MedicalHistoryPetVets()
+                      MedicalHistoryPetTreatments(history: _history),
+                      MedicalHistoryPetObservations(history: _history)
                     ],
                   ),
                 ),

@@ -1,15 +1,26 @@
+import 'package:arvivet_app/models/history_pet.dart';
+import 'package:arvivet_app/utils/app_colors.dart';
 import 'package:arvivet_app/utils/general.dart';
 import 'package:flutter/material.dart';
 
-class MedicalHistoryPetVets extends StatelessWidget {
-  const MedicalHistoryPetVets({super.key});
+class MedicalHistoryPetObservations extends StatefulWidget {
+  final List<HistoryPet> history;
 
+  const MedicalHistoryPetObservations({super.key, required this.history});
+
+  @override
+  State<MedicalHistoryPetObservations> createState() =>
+      MedicalHistoryPetObservationState();
+}
+
+class MedicalHistoryPetObservationState
+    extends State<MedicalHistoryPetObservations> {
   @override
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(20),
-      margin: const EdgeInsets.only(bottom: 24),
+      margin: const EdgeInsets.only(bottom: 16),
       decoration: BoxDecoration(
         color: Colors.grey[50],
         borderRadius: BorderRadius.circular(20),
@@ -22,18 +33,18 @@ class MedicalHistoryPetVets extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  color: Colors.teal.withOpacity(0.1),
+                  color: Colors.purple.withOpacity(0.1),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: const Icon(
-                  Icons.local_hospital,
+                  Icons.loupe,
                   size: 20,
-                  color: Colors.teal,
+                  color: Colors.purple,
                 ),
               ),
               const SizedBox(width: 12),
               const Text(
-                'Veterinario Principal',
+                'Últimas observaciones\nencontradas',
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w600,
@@ -43,8 +54,16 @@ class MedicalHistoryPetVets extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 16),
-          buildVetInfo('Dr. María García', 'Clínica Veterinaria Central',
-              '+593 99 123 4567'),
+          if (widget.history.isEmpty)
+            const Text(
+              'No hay Observaciones recientes.',
+              style:
+                  TextStyle(fontSize: 14, color: AppColors.secBackgroundColor),
+            )
+          else
+            ...widget.history.take(3).map((h) {
+              return buildTreatInfo(h.observations);
+            }),
         ],
       ),
     );

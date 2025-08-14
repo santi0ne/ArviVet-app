@@ -59,6 +59,8 @@ class AppointmentServices {
     return Appointment.fromJson(response);
   }
 
+  
+
   static Future<List<Specialty>> fetchSpecialties() async {
     final response =
         await Supabase.instance.client.from('speciality').select('id, name');
