@@ -5,7 +5,7 @@ import 'package:arvivet_app/utils/app_sizes.dart';
 //boton reutilizable necesita el texto y la funcion
 class CustomButton extends StatelessWidget {
   final String description;
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
   final double? width;
   final double? height;
   final Color primaryColor;

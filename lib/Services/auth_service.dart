@@ -51,7 +51,7 @@ class AuthService {
       sessionManager.userId = null;
       sessionManager.nombre = null;
       sessionManager.rol = null;
-
+      
       if (_client.auth.currentSession != null) {
         await _client.auth.signOut();
       }

@@ -1,37 +1,49 @@
+import 'package:arvivet_app/models/user.dart';
 import 'package:arvivet_app/utils/general.dart';
 import 'package:flutter/material.dart';
 
 class EditAboutPersonalInfo extends StatefulWidget {
-  const EditAboutPersonalInfo({super.key});
+  final UserData? userData;
+
+  const EditAboutPersonalInfo({
+    super.key,
+    required this.userData,
+  });
 
   @override
   State<EditAboutPersonalInfo> createState() => EditAboutPersonalInfoState();
 }
 
 class EditAboutPersonalInfoState extends State<EditAboutPersonalInfo> {
-  final nombreController = TextEditingController();
-  final cedulaController = TextEditingController();
-  final correoController = TextEditingController();
-  final celularController = TextEditingController();
-  final usuarioController = TextEditingController();
+  late final TextEditingController nombreController;
+  late final TextEditingController correoController;
+  late final TextEditingController telefonoController;
+  late final TextEditingController direccionController;
+
+  @override
+  void initState() {
+    super.initState();
+    nombreController = TextEditingController(text: widget.userData?.nombre ?? '');
+    correoController = TextEditingController(text: widget.userData?.correo ?? '');
+    telefonoController = TextEditingController(text: widget.userData?.telefono ?? '');
+    direccionController = TextEditingController(text: widget.userData?.direccion ?? '');
+  }
 
   @override
   void dispose() {
     nombreController.dispose();
-    cedulaController.dispose();
     correoController.dispose();
-    celularController.dispose();
-    usuarioController.dispose();
+    telefonoController.dispose();
+    direccionController.dispose();
     super.dispose();
   }
 
   Map<String, String> getDatos() {
     final datos = {
       'nombre': nombreController.text,
-      'cedula': cedulaController.text,
       'correo': correoController.text,
-      'celular': celularController.text,
-      'usuario': usuarioController.text,
+      'celular': telefonoController.text,
+      'usuario': direccionController.text,
     };
 
     return datos;
@@ -42,10 +54,9 @@ class EditAboutPersonalInfoState extends State<EditAboutPersonalInfo> {
     return Column(
       children: [
         buildInput('Nombre completo', nombreController),
-        buildInput('Cédula', cedulaController),
         buildInput('Correo', correoController),
-        buildInput('Celular', celularController),
-        buildInput('Usuario', usuarioController),
+        buildInput('Teléfono', telefonoController),
+        buildInput('Dirección', direccionController),
       ],
     );
   }

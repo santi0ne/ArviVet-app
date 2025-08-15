@@ -2,7 +2,9 @@ import 'package:arvivet_app/utils/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
 class AboutHeader extends StatelessWidget {
-  const AboutHeader({super.key});
+  final String name;
+
+  const AboutHeader({super.key, required this.name});
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +30,8 @@ class AboutHeader extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 20),
-        const Text(
-          'Hola, Usuario!',
+        Text(
+          'Hola, $name!',
           style: AppTextStyles.title,
         ),
       ],
