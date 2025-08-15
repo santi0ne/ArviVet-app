@@ -67,6 +67,16 @@ class AppointmentsPageState extends State<AppointmentsPage> {
             .where((a) => a.date.compareTo(_fechaSeleccionada!) >= 0)
             .toList();
 
+    String getEmptyAppointmentsMessage() {
+      if (_appointments.isEmpty) {
+        return isUpcoming
+            ? 'No hay citas próximas a ejecutarse'
+            : 'No se ha ejecutado citas';
+      } else {
+        return 'No hay citas para la fecha seleccionada';
+      }
+    }
+
     return Scaffold(
       appBar: CustomAppBar(
           label: 'Historial de Citas',
@@ -149,9 +159,12 @@ class AppointmentsPageState extends State<AppointmentsPage> {
           Expanded(
             child: _isLoading
                 ? const Center(child: CircularProgressIndicator())
-                : appointments.isEmpty
-                    ? const Center(
-                        child: Text('No hay citas para la fecha seleccionada'),
+                : (appointments.isEmpty
+                    ? Center(
+                        child: Text(
+                          getEmptyAppointmentsMessage(),
+                          textAlign: TextAlign.center,
+                        ),
                       )
                     : ListView.separated(
                         padding: const EdgeInsets.fromLTRB(24, 0, 24, 20),
@@ -161,7 +174,7 @@ class AppointmentsPageState extends State<AppointmentsPage> {
                           appointment: appointments[i],
                           upcoming: _segment == 0,
                         ),
-                      ),
+                      )),
           ),
           Container(
             color: AppColors.whiteColor, // fondo blanco
