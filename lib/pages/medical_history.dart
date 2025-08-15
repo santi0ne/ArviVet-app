@@ -70,19 +70,42 @@ class _MedicalHistoryPageState extends State<MedicalHistoryPage> {
       body: SafeArea(
         child: (_isLoadingPetInfo || _isLoadingHistory)
             ? const Center(child: CircularProgressIndicator())
-            : SingleChildScrollView(
-                child: Padding(
-                  padding: const EdgeInsets.all(16),
-                  child: Column(
-                    children: [
-                      MedicalHistoryPetInfo(pet: pet),
-                      MedicalHistoryRecentVisits(history: _history),
-                      MedicalHistoryPetTreatments(history: _history),
-                      MedicalHistoryPetObservations(history: _history)
-                    ],
-                  ),
-                ),
-              ),
+            // ignore: unnecessary_null_comparison
+            : (pet == null
+                ? const Center(
+                    child: Text(
+                      'Para ver esta pantalla, debe registrar una mascota',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  )
+                : SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.all(16),
+                      child: Column(
+                        children: [
+                          MedicalHistoryPetInfo(pet: pet),
+                          if (_history.isEmpty)
+                            Center(
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 32),
+                                child: Text(
+                                  '${pet.name} no tiene registros de historial para mostrar.',
+                                  textAlign: TextAlign.center,
+                                  style: const TextStyle(fontSize: 16),
+                                ),
+                              ),
+                            )
+                          else ...[
+                            MedicalHistoryRecentVisits(history: _history),
+                            MedicalHistoryPetTreatments(history: _history),
+                            MedicalHistoryPetObservations(history: _history),
+                          ]
+                        ],
+                      ),
+                    ),
+                  )),
       ),
     );
   }
