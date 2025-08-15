@@ -20,10 +20,9 @@ class AboutPersonalInfo extends StatelessWidget {
         ),
         const SizedBox(height: 16),
         buildInfoRow('Nombre completo', info['nombre'] ?? ''),
-        buildInfoRow('Cédula', info['cedula'] ?? ''),
         buildInfoRow('Correo electrónico', info['correo'] ?? ''),
-        buildInfoRow('Celular', info['celular'] ?? ''),
-        buildInfoRow('Usuario', info['usuario'] ?? ''),
+        buildInfoRow('Teléfono', info['telefono'] ?? ''),
+        buildInfoRow('Dirección', info['direccion'] ?? ''),
       ],
     );
   }

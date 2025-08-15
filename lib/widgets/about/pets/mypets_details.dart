@@ -1,7 +1,23 @@
+import 'package:arvivet_app/models/pet.dart';
 import 'package:flutter/material.dart';
 
+import 'package:arvivet_app/utils/app_colors.dart';
+
 class MyPetsDetails extends StatelessWidget {
-  const MyPetsDetails({super.key});
+  final Pet? pet;
+
+  const MyPetsDetails({super.key, required this.pet});
+
+  int calcularEdadEnAnios(DateTime fechaNacimiento) {
+    final ahora = DateTime.now();
+    int edad = ahora.year - fechaNacimiento.year;
+    if (ahora.month < fechaNacimiento.month ||
+        (ahora.month == fechaNacimiento.month &&
+            ahora.day < fechaNacimiento.day)) {
+      edad--;
+    }
+    return edad;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -15,9 +31,9 @@ class MyPetsDetails extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            'Shih Tzu',
-            style: TextStyle(
+          Text(
+            pet!.breed,
+            style: const TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.w600,
               color: Colors.black87,
@@ -35,9 +51,9 @@ class MyPetsDetails extends StatelessWidget {
                   color: Colors.grey[200],
                   borderRadius: BorderRadius.circular(20),
                 ),
-                child: const Text(
-                  '1 año',
-                  style: TextStyle(
+                child: Text(
+                  '${calcularEdadEnAnios(pet!.birthDate).toString()} años',
+                  style: const TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w500,
                     color: Colors.black87,
@@ -52,13 +68,12 @@ class MyPetsDetails extends StatelessWidget {
                   color: Colors.pink[100],
                   borderRadius: BorderRadius.circular(20),
                 ),
-                child: const Text(
-                  '♀',
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.black87,
-                  ),
+                child: Icon(
+                  pet!.sex.toLowerCase() == 'macho' ? Icons.male : Icons.female,
+                  size: 20,
+                  color: pet!.sex.toLowerCase() == 'macho'
+                      ? AppColors.borderColor
+                      : AppColors.errorBorderColor,
                 ),
               ),
               const SizedBox(width: 12),
@@ -69,9 +84,9 @@ class MyPetsDetails extends StatelessWidget {
                   color: Colors.grey[200],
                   borderRadius: BorderRadius.circular(20),
                 ),
-                child: const Text(
-                  '5kg',
-                  style: TextStyle(
+                child: Text(
+                  '${pet!.weigth.toString()} kg',
+                  style: const TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w500,
                     color: Colors.black87,
@@ -113,9 +128,9 @@ class MyPetsDetails extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 2),
-                      const Text(
-                        'Café',
-                        style: TextStyle(
+                      Text(
+                        pet!.colour ?? '',
+                        style: const TextStyle(
                           fontSize: 14,
                           color: Colors.black87,
                           fontWeight: FontWeight.w600,
@@ -157,97 +172,9 @@ class MyPetsDetails extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 2),
-                      const Text(
-                        'Ecuador',
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Colors.black87,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 16),
-            child: Row(
-              children: [
-                Container(
-                  padding: const EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                    color: Colors.orange.withOpacity(0.1),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: const Icon(
-                    Icons.credit_card,
-                    size: 20,
-                    color: Colors.orange,
-                  ),
-                ),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
                       Text(
-                        'Número de tarjeta de mascota',
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: Colors.grey[600],
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                      const SizedBox(height: 2),
-                      const Text(
-                        '123-55',
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Colors.black87,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 16),
-            child: Row(
-              children: [
-                Container(
-                  padding: const EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                    color: Colors.green.withOpacity(0.1),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: const Icon(
-                    Icons.pets,
-                    size: 20,
-                    color: Colors.green,
-                  ),
-                ),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Raza',
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: Colors.grey[600],
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                      const SizedBox(height: 2),
-                      const Text(
-                        'Shih Tzu',
-                        style: TextStyle(
+                        pet!.countryOrigin,
+                        style: const TextStyle(
                           fontSize: 14,
                           color: Colors.black87,
                           fontWeight: FontWeight.w600,

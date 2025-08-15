@@ -1,4 +1,3 @@
-import 'package:arvivet_app/services/vet_schedule_service.dart';
 import 'package:arvivet_app/widgets/schedule_appointment//custom_calendar.dart';
 import 'package:arvivet_app/widgets/schedule_appointment/vet_schedule_list.dart';
 import 'package:arvivet_app/widgets/ui/custom_button.dart';
@@ -8,7 +7,6 @@ import 'package:arvivet_app/utils/app_text_styles.dart';
 import 'package:arvivet_app/widgets/schedule_appointment/specialty.dart';
 import 'package:arvivet_app/widgets/schedule_appointment/customSpecialtyDropdown.dart';
 import 'package:arvivet_app/widgets/ui/custom_appbar.dart';
-import 'package:arvivet_app/widgets/schedule_appointment/doctor_info_card.dart';
 import 'package:arvivet_app/widgets/schedule_appointment/show_appointment_dialog.dart';
 import 'package:arvivet_app/services/appointments_services.dart';
 

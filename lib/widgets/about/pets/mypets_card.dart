@@ -1,7 +1,10 @@
+import 'package:arvivet_app/models/pet.dart';
 import 'package:flutter/material.dart';
 
 class MyPetsCard extends StatelessWidget {
-  const MyPetsCard({super.key});
+  final Pet? pet;
+
+  const MyPetsCard({super.key, this.pet});
 
   @override
   Widget build(BuildContext context) {
@@ -10,8 +13,10 @@ class MyPetsCard extends StatelessWidget {
       height: 180,
       margin: const EdgeInsets.only(bottom: 24),
       decoration: BoxDecoration(
-        gradient: const LinearGradient(
-          colors: [Color(0xFFDA70D6), Color(0xFFBA55D3)],
+        gradient: LinearGradient(
+          colors: pet!.sex.toLowerCase() == 'macho'
+              ? [const Color(0xFF87CEEB), const Color(0xFF4FC3F7)]
+              : [const Color(0xFFDA70D6), const Color(0xFFBA55D3)],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
@@ -23,7 +28,7 @@ class MyPetsCard extends StatelessWidget {
             left: 20,
             top: 20,
             child: Text(
-              'Perla',
+              pet!.name,
               style: TextStyle(
                 fontSize: 50,
                 fontWeight: FontWeight.bold,

@@ -6,6 +6,7 @@ class Pet {
   final String breed;
   final String sex;
   final double weigth;
+  final String? colour;
   final String countryOrigin;
   final DateTime? sterilizationDate;
   final int ownerId;
@@ -18,6 +19,7 @@ class Pet {
     required this.breed,
     required this.sex,
     required this.weigth,
+    this.colour,
     required this.countryOrigin,
     this.sterilizationDate,
     required this.ownerId,
@@ -32,6 +34,7 @@ class Pet {
       breed: json['breed'] as String,
       sex: json['sex'] as String,
       weigth: (json['weigth'] as num).toDouble(),
+      colour: json['colour'] as String,
       countryOrigin: json['country_origin'] as String,
       sterilizationDate: json['sterilization_date'] != null
           ? DateTime.tryParse(json['sterilization_date'])
