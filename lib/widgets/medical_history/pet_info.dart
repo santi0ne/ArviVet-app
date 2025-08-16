@@ -1,10 +1,11 @@
 import 'package:arvivet_app/models/pet.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class MedicalHistoryPetInfo extends StatelessWidget {
-  final Pet pet;
+  Pet? pet;
 
-  const MedicalHistoryPetInfo({super.key, required this.pet});
+  MedicalHistoryPetInfo({super.key, this.pet});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +15,7 @@ class MedicalHistoryPetInfo extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 20),
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: pet.sex.toLowerCase() == 'macho'
+          colors: pet!.sex.toLowerCase() == 'macho'
               ? [const Color(0xFF87CEEB), const Color(0xFF4FC3F7)]
               : [const Color(0xFFDA70D6), const Color(0xFFBA55D3)],
           begin: Alignment.topLeft,
@@ -43,7 +44,7 @@ class MedicalHistoryPetInfo extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  pet.name,
+                  pet!.name,
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -58,7 +59,7 @@ class MedicalHistoryPetInfo extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  '${pet.breed} • ${pet.sex} • ${pet.weigth}kg',
+                  '${pet!.breed} • ${pet!.sex} • ${pet!.weigth}kg',
                   style: TextStyle(
                     fontSize: 14,
                     color: Colors.white.withOpacity(0.9),

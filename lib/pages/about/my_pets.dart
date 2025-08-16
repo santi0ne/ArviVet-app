@@ -1,9 +1,11 @@
 import 'package:arvivet_app/models/pet.dart';
 import 'package:arvivet_app/services/pet_service.dart';
+import 'package:arvivet_app/utils/app_colors.dart';
 import 'package:arvivet_app/utils/session_manager.dart';
 import 'package:arvivet_app/widgets/about/pets/mypets_card.dart';
 import 'package:arvivet_app/widgets/about/pets/mypets_details.dart';
 import 'package:arvivet_app/widgets/ui/custom_appbar.dart';
+import 'package:arvivet_app/widgets/ui/custom_button.dart';
 import 'package:flutter/material.dart';
 
 class MyPetsPage extends StatefulWidget {
@@ -47,18 +49,43 @@ class _MyPetsPageState extends State<MyPetsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomAppBar(label: 'Mi Mascota'),
-      body: Column(
-        children: [
-          Expanded(
-            child: SingleChildScrollView(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: Column(
-                children: [MyPetsCard(pet: pet), MyPetsDetails(pet: pet)],
+      body: pet == null
+          ? Center(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 32.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text(
+                      'No se ha registrado mascota',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 18),
+                    ),
+                    const SizedBox(height: 24),
+                    CustomButton(
+                      description: 'Registrar Mascota',
+                      primaryColor: AppColors.borderColor,
+                      width: 200,
+                      onPressed: () {
+                        //Navigator.pushNamed(context, '/crear-mascota');
+                      },
+                    ),
+                  ],
+                ),
               ),
+            )
+          : Column(
+              children: [
+                Expanded(
+                  child: SingleChildScrollView(
+                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                    child: Column(
+                      children: [MyPetsCard(pet: pet), MyPetsDetails(pet: pet)],
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ),
-        ],
-      ),
     );
   }
 }

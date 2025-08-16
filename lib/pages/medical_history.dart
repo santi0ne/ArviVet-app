@@ -19,7 +19,7 @@ class MedicalHistoryPage extends StatefulWidget {
 }
 
 class _MedicalHistoryPageState extends State<MedicalHistoryPage> {
-  late Pet pet;
+  Pet? pet;
   bool _isLoadingPetInfo = true;
   bool _isLoadingHistory = true;
   List<HistoryPet> _history = [];
@@ -43,7 +43,7 @@ class _MedicalHistoryPageState extends State<MedicalHistoryPage> {
         _isLoadingPetInfo = false;
       });
 
-      final fetchedHistory = await HistoryPetServices.fetchHistoryByPet(pet.id);
+      final fetchedHistory = await HistoryPetServices.fetchHistoryByPet(pet!.id);
       if (fetchedHistory.isEmpty) throw Exception('No se encontro historial');
       setState(() {
         _history = fetchedHistory;
@@ -91,7 +91,7 @@ class _MedicalHistoryPageState extends State<MedicalHistoryPage> {
                                 padding:
                                     const EdgeInsets.symmetric(vertical: 32),
                                 child: Text(
-                                  '${pet.name} no tiene registros de historial para mostrar.',
+                                  '${pet!.name} no tiene registros de historial para mostrar.',
                                   textAlign: TextAlign.center,
                                   style: const TextStyle(fontSize: 16),
                                 ),
