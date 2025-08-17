@@ -48,7 +48,7 @@ class VetScheduleService {
       return VetHorario(
         vetId: row['vet_id'],
         vetName: row['vet']['name'],
-        branchDirection: 'Sucursal X', // Placeholder por ahora
+        branchDirection: 'Sucursal Centro', // Revisar
         startTime: _parseTime(row['start_time']),
         endTime: _parseTime(row['end_time']),
       );
